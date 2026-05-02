@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}}</title>
+  <style>
+    /* ===== Apple Canvas v1.0 — Scroll Scaffold ===== */
+    :root {
+      --font-en: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-kr: "Apple SD Gothic Neo", "Pretendard", var(--font-en);
+      --radius-tile: 36px;
+    }
+    :root[data-theme="light"] {
+      --bg: #FFFFFF; --bg-alt: #F5F5F7;
+      --text: #1D1D1F; --headline: #000000;
+      --accent-blue: #0071E3; --accent-green: #00845A; --accent-orange: #CA6B07;
+      --accent-purple: #5E5CE6; --accent-pink: #D74A78;
+      --highlight: rgba(0,113,227,0.15);
+    }
+    :root[data-theme="dark"] {
+      --bg: #000000; --bg-alt: #1D1D1F;
+      --text: #F5F5F7; --headline: #FFFFFF;
+      --accent-blue: #2997FF; --accent-green: #30D158; --accent-orange: #FF9F0A;
+      --accent-purple: #BF5AF2; --accent-pink: #FF375F;
+      --highlight: rgba(41,151,255,0.25);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-kr); background: var(--bg); color: var(--text); transition: background 600ms, color 400ms; }
+    
+    /* Section dual tone */
+    section.theme-light { background: #FFFFFF; color: #1D1D1F; }
+    section.theme-dark { background: #000000; color: #F5F5F7; }
+    section.theme-light.background-alt { background: #F5F5F7; }
+    section.theme-dark.background-alt { background: #1D1D1F; }
+    section { transition: background-color 600ms ease; padding: 80px 24px; }
+    
+    /* Typography 16-scale */
+    .typography-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+    .typography-section-headline { font-size: clamp(40px, 5vw, 64px); font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; color: var(--headline); }
+    .typography-hero-tagline { font-size: clamp(80px, 10vw, 120px); font-weight: 900; line-height: 1.05; letter-spacing: -0.015em; color: var(--headline); }
+    .typography-headline-super { font-size: clamp(140px, 18vw, 200px); font-weight: 900; line-height: 0.95; letter-spacing: -0.02em; color: var(--headline); }
+    .typography-banner-card-headline { font-size: clamp(28px, 3vw, 40px); font-weight: 700; line-height: 1.15; }
+    .typography-feature-card-headline { font-size: clamp(24px, 2.5vw, 32px); font-weight: 700; }
+    .typography-tile-headline { font-size: clamp(20px, 2vw, 28px); font-weight: 700; }
+    .typography-body-elevated { font-size: clamp(20px, 1.8vw, 24px); font-weight: 400; line-height: 1.5; }
+    .typography-body { font-size: clamp(16px, 1.4vw, 18px); font-weight: 400; line-height: 1.5; }
+    .typography-body-reduced { font-size: clamp(13px, 1vw, 15px); font-weight: 400; line-height: 1.5; opacity: 0.85; }
+    .typography-disclaimer { font-size: clamp(11px, 0.9vw, 13px); font-weight: 400; opacity: 0.7; }
+    .typography-cta-primary { font-size: 17px; font-weight: 500; }
+    .typography-cta-secondary { font-size: 15px; font-weight: 500; }
+    .typography-footnote { font-size: 12px; opacity: 0.6; }
+    
+    /* Highlight (형광펜) */
+    mark.highlight { background: var(--highlight); color: inherit; padding: 0 4px; border-radius: 4px; }
+    
+    /* 12-col grid */
+    .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; max-width: 1440px; margin: 0 auto; }
+    .column.large-1 { grid-column: span 1; } .column.large-2 { grid-column: span 2; } .column.large-3 { grid-column: span 3; }
+    .column.large-4 { grid-column: span 4; } .column.large-5 { grid-column: span 5; } .column.large-6 { grid-column: span 6; }
+    .column.large-7 { grid-column: span 7; } .column.large-8 { grid-column: span 8; } .column.large-9 { grid-column: span 9; }
+    .column.large-10 { grid-column: span 10; } .column.large-11 { grid-column: span 11; } .column.large-12 { grid-column: span 12; }
+    .column.large-offset-1 { grid-column-start: 2; } .column.large-offset-2 { grid-column-start: 3; }
+    
+    /* Full-bleed */
+    .media-full-bleed { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+    
+    /* Bento */
+    .bento-section { padding: 80px 24px; max-width: 1440px; margin: 0 auto; }
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .bento-item { padding: 32px; border-radius: var(--radius-tile); background: var(--bg-alt); display: flex; flex-direction: column; gap: 12px; }
+    .bento-item.large-7 { grid-column: span 7; }
+    .bento-item.large-5 { grid-column: span 5; }
+    .bento-item.large-4 { grid-column: span 4; }
+    .bento-item.large-12 { grid-column: span 12; }
+    .tile-rounded { border-radius: var(--radius-tile); }
+    
+    /* Sticky / Pin */
+    .sticky-container { position: relative; min-height: 200vh; }
+    .content-sticky-container { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px; }
+    .pin-bottom-center { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+    .pin-top-center { position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+    
+    /* Compare matrix */
+    .dd-compare-grid { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .dd-compare-grid th { position: sticky; top: 0; background: var(--bg); z-index: 10; padding: 16px; }
+    .compare-column { text-align: center; font-weight: 700; }
+    .compare-rowheader { font-weight: 700; text-align: left; padding: 16px; }
+    .cell-item { padding: 16px; text-align: center; border-top: 1px solid rgba(128,128,128,0.2); }
+    .feature-group td { background: var(--bg-alt); }
+    
+    /* Color Swatch */
+    .colornav { display: flex; gap: 12px; padding: 16px; justify-content: center; }
+    .colornav-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 200ms, transform 200ms; }
+    .colornav-swatch:hover { transform: scale(1.1); }
+    .colornav-swatch[aria-checked="true"] { border-color: var(--text); outline: 2px solid var(--bg); outline-offset: -4px; }
+    
+    /* Big Number */
+    .big-number-block { text-align: center; padding: 80px 24px; }
+    .big-number-unit { font-size: 0.5em; vertical-align: super; opacity: 0.7; }
+    
+    /* Tile-BOC */
+    .tile-boc-trigger { background: none; border: none; color: var(--accent-blue); font-size: 17px; cursor: pointer; padding: 8px 0; }
+    .tile-boc-trigger::after { content: " ▾"; transition: transform 200ms; display: inline-block; }
+    .tile-boc-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .tile-boc-content { max-height: 0; overflow: hidden; transition: max-height 400ms ease; }
+    .tile-boc-content:not([hidden]) { max-height: 1000px; }
+    
+    /* CTA buttons */
+    .cta-primary { background: var(--accent-blue); color: white; padding: 12px 24px; border-radius: 980px; border: none; font-size: 17px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+    .cta-secondary { background: transparent; color: var(--accent-blue); padding: 12px 24px; border-radius: 980px; border: 1px solid var(--accent-blue); font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+    
+    /* Staggered fade-in */
+    .StaggeredFadeIn_animationWrapper > * { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms ease; }
+    .StaggeredFadeIn_animationWrapper.is-visible > * { opacity: 1; transform: translateY(0); }
+    .StaggeredFadeIn_animationWrapper > *:nth-child(1) { transition-delay: 0ms; }
+    .StaggeredFadeIn_animationWrapper > *:nth-child(2) { transition-delay: 100ms; }
+    .StaggeredFadeIn_animationWrapper > *:nth-child(3) { transition-delay: 200ms; }
+    .StaggeredFadeIn_animationWrapper > *:nth-child(4) { transition-delay: 300ms; }
+    
+    /* Footnote */
+    .footnote-number { font-size: 0.7em; vertical-align: super; }
+    .footnote-number a { color: var(--accent-blue); text-decoration: none; }
+    .footnotes { margin-top: 80px; padding: 32px 24px; border-top: 1px solid rgba(128,128,128,0.2); max-width: 1440px; margin-left: auto; margin-right: auto; }
+    .footnote-list { list-style: none; padding: 0; }
+    .footnote { font-size: 12px; opacity: 0.7; line-height: 1.6; padding: 8px 0; }
+    .footnote-subglyph { font-weight: 700; margin-right: 8px; }
+    
+    /* Visually hidden */
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    
+    /* Focus */
+    :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 4px; border-radius: 4px; }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .sticky-container { min-height: auto; }
+      .content-sticky-container { position: static; height: auto; }
+      video[data-inline-media] { display: none; }
+      picture.fallback { display: block !important; }
+    }
+    
+    /* Responsive */
+    @media (max-width: 733px) {
+      .column[class*="large-"] { grid-column: span 12 !important; }
+      .bento-item[class*="large-"] { grid-column: span 12 !important; }
+      section { padding: 48px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HERO (다크) -->
+  <section class="theme-dark hero-section">
+    <div class="row">
+      <div class="column large-12">
+        <p class="typography-eyebrow">{{HERO_EYEBROW}}</p>
+        <h1 class="hero-tagline typography-hero-tagline">{{HERO_TITLE}}</h1>
+        <p class="typography-body-elevated">{{HERO_SUBTITLE}}</p>
+      </div>
+    </div>
+    <!-- 스크롤 트리거 비디오 (옵션) -->
+    <video
+      data-inline-media
+      data-inline-media-play-keyframe='{"start":"t-50vh","end":"b+50vh"}'
+      muted playsinline preload="auto"
+      aria-label="Hero animation"
+      role="img"
+      style="width:100%; margin-top:48px; border-radius:24px;">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- 2. STICKY PIN STORY (다크 + 스티키) -->
+  <section class="theme-dark background-alt sticky-container">
+    <div class="content-sticky-container">
+      <p class="typography-eyebrow">{{STICKY_EYEBROW}}</p>
+      <h2 class="typography-section-headline">{{STICKY_TITLE}}</h2>
+      <p class="typography-body-elevated">{{STICKY_BODY}}</p>
+    </div>
+  </section>
+
+  <!-- 3. BENTO 섹션 (라이트 - 톤 전환) -->
+  <section class="theme-light bento-section">
+    <header style="text-align:center; margin-bottom:48px;">
+      <p class="typography-eyebrow">{{BENTO_EYEBROW}}</p>
+      <h2 class="typography-section-headline">{{BENTO_TITLE}}</h2>
+    </header>
+    <div class="bento-grid">
+      <div class="bento-item large-7 tile-rounded">
+        <h3 class="typography-banner-card-headline">{{BOX1_TITLE}}</h3>
+        <p class="typography-body">{{BOX1_BODY}}</p>
+      </div>
+      <div class="bento-item large-5 tile-rounded">
+        <h3 class="typography-banner-card-headline">{{BOX2_TITLE}}</h3>
+        <p class="typography-body">{{BOX2_BODY}}</p>
+      </div>
+      <div class="bento-item large-4 tile-rounded">
+        <h3 class="typography-feature-card-headline">{{BOX3_TITLE}}</h3>
+        <p class="typography-body-reduced">{{BOX3_BODY}}</p>
+      </div>
+      <div class="bento-item large-4 tile-rounded">
+        <h3 class="typography-feature-card-headline">{{BOX4_TITLE}}</h3>
+        <p class="typography-body-reduced">{{BOX4_BODY}}</p>
+      </div>
+      <div class="bento-item large-4 tile-rounded">
+        <h3 class="typography-feature-card-headline">{{BOX5_TITLE}}</h3>
+        <p class="typography-body-reduced">{{BOX5_BODY}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. COMPARE 매트릭스 (라이트) -->
+  <section class="theme-light background-alt">
+    <div class="row">
+      <div class="column large-12">
+        <header style="text-align:center; margin-bottom:48px;">
+          <p class="typography-eyebrow">비교</p>
+          <h2 class="typography-section-headline">{{COMPARE_TITLE}}</h2>
+        </header>
+        <table class="dd-compare-grid">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="compare-column">옵션 A</th>
+              <th class="compare-column">옵션 B</th>
+              <th class="compare-column">옵션 C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="feature-group">
+              <td class="compare-rowheader">{{ROW1_LABEL}}</td>
+              <td class="cell-item">{{ROW1_A}}</td>
+              <td class="cell-item">{{ROW1_B}}</td>
+              <td class="cell-item">{{ROW1_C}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CTA + Color Swatch (다크) -->
+  <section class="theme-dark">
+    <div class="row">
+      <div class="column large-8 large-offset-2" style="text-align:center;">
+        <h2 class="typography-section-headline">{{CTA_TITLE}}</h2>
+        <p class="typography-body-elevated" style="margin: 24px 0;">{{CTA_BODY}}</p>
+        <div class="colornav" role="radiogroup" aria-label="색상 선택">
+          <button class="colornav-swatch" style="background:#30D158" role="radio" aria-checked="true" aria-label="Green"></button>
+          <button class="colornav-swatch" style="background:#FF9F0A" role="radio" aria-checked="false" aria-label="Orange"></button>
+          <button class="colornav-swatch" style="background:#FF375F" role="radio" aria-checked="false" aria-label="Pink"></button>
+        </div>
+        <a href="#" class="cta-primary" style="margin-top:24px;">{{CTA_BUTTON}}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footnote -->
+  <section class="footnotes theme-light background-alt">
+    <h2 class="visually-hidden">각주</h2>
+    <ol class="footnote-list">
+      <li id="fn1" class="footnote">
+        <span class="footnote-subglyph">1.</span>
+        {{FOOTNOTE_1}}
+        <a href="#ref1" aria-label="본문으로 돌아가기">↩</a>
+      </li>
+    </ol>
+  </section>
+
+<script>
+// ===== Apple Canvas Scaffold JS =====
+
+// 1. Color Swatch
+document.querySelectorAll('.colornav').forEach(nav => {
+  nav.addEventListener('click', (e) => {
+    const swatch = e.target.closest('.colornav-swatch');
+    if (!swatch) return;
+    nav.querySelectorAll('.colornav-swatch').forEach(s => s.setAttribute('aria-checked', 'false'));
+    swatch.setAttribute('aria-checked', 'true');
+  });
+});
+
+// 2. Tile-BOC
+document.querySelectorAll('.tile-boc-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (target) target.hidden = expanded;
+  });
+});
+
+// 3. Staggered Fade-In (IntersectionObserver)
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      fadeObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.StaggeredFadeIn_animationWrapper').forEach(el => fadeObserver.observe(el));
+
+// 4. Scroll-triggered video
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) v.play().catch(() => {});
+    else v.pause();
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('video[data-inline-media]').forEach(v => videoObserver.observe(v));
+
+// 5. Reduced-motion check
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[data-inline-media]').forEach(v => v.style.display = 'none');
+}
+</script>
+
+</body>
+</html>
