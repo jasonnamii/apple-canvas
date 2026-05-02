@@ -39,6 +39,11 @@
 ```
 의미(`banner-card-headline`)와 시각(`typography-*`)을 분리.
 
+**한글 폰트 강제 (H2 하위 규칙):**
+- `--font-kr` 첫 폰트 = `"Pretendard Variable"` 또는 `Pretendard` 의무
+- Pretendard CDN 임포트 누락 = FAIL
+- 시스템 한글 폰트 단독 사용 = FAIL
+
 ## H3. 풀블리드 + 12열 그리드
 박스에 갇힘 → 경고.
 

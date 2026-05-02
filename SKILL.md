@@ -129,7 +129,21 @@ license: Proprietary. Personal use.
 ```html
 <h2 class="banner-card-headline typography-banner-card-headline">…</h2>
 ```
-의미(`banner-card-headline`)와 시각(`typography-*`)을 분리. 폰트: SF Pro / SF Pro SC(중국어) / SF Pro JP(일본어) 자동 분기.
+의미(`banner-card-headline`)와 시각(`typography-*`)을 분리.
+
+### 한글 폰트 = Pretendard 강제 (1급)
+
+**모든 한국어 본문에 Pretendard 우선 적용.** Pretendard Variable CDN 임포트 + `--font-kr` 1순위 박제.
+
+```html
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+```
+
+```css
+--font-kr: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+```
+
+다국어 자동 분기: `lang="ko"`(Pretendard) / `lang="zh"`(SF Pro SC) / `lang="ja"`(SF Pro JP) / `lang="en"`(SF Pro).
 
 ---
 

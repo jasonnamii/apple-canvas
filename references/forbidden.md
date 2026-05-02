@@ -10,7 +10,9 @@
 - ❌ 모든 헤딩 `<h1>` (16단계 무시)
 - ❌ 헤딩 웨이트 <700 (애플 본질 X)
 - ❌ 본문 웨이트 ≥600 (가독성 ✗)
-- ❌ 한국어에 SF Pro만 (Apple SD Gothic Neo 누락)
+- ❌ 한국어에 SF Pro만 (Pretendard 누락 = FAIL)
+- ❌ Pretendard CDN 임포트 누락 (폰트 미로드 시 시스템 폰트 폴백·애플 톤 무너짐)
+- ❌ `--font-kr` 첫 폰트가 Pretendard 아님 = FAIL
 - ❌ 폰트 12px 미만
 
 ## 레이아웃

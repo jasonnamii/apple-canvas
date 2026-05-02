@@ -30,18 +30,52 @@
 | 15 | `site-modal-headline` | `typography-site-modal-headline` | clamp(24px, 2.4vw, 32px) | 700 |
 | 16 | `footnote` | `typography-footnote` | 12px | 400 alpha 0.6 |
 
-## 폰트 패밀리 (다국어 분기)
+## 폰트 패밀리 (Pretendard 우선)
+
+### 한국어 = Pretendard 강제 (1급)
+**한국어 본문은 무조건 Pretendard 우선.** 시스템 폰트 폴백은 차순위.
+
+### CDN 임포트 (필수)
+HTML `<head>` 또는 CSS 최상단에 추가:
+
+```html
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+```
+
+또는 CSS:
+```css
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+```
+
+### CSS 변수 (Pretendard 1순위)
 ```css
 :root {
   --font-en: "SF Pro Display", "SF Pro Icons", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "SF Mono", Menlo, monospace;
   --font-sc: "SF Pro SC", "PingFang SC", sans-serif;  /* 중국어 */
   --font-jp: "SF Pro JP", "Hiragino Sans", sans-serif; /* 일본어 */
-  --font-kr: "SF Pro KR", "Apple SD Gothic Neo", "Pretendard", sans-serif; /* 한국어 */
+  
+  /* 한국어 = Pretendard 강제 1순위 */
+  --font-kr: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 }
-html[lang^="ko"] body { font-family: var(--font-kr); }
+
+/* 한국어 자동 분기 (디폴트) */
+html[lang^="ko"] body,
+html:not([lang]) body,
+body { font-family: var(--font-kr); }
+
 html[lang^="zh"] body { font-family: var(--font-sc); }
 html[lang^="ja"] body { font-family: var(--font-jp); }
+html[lang^="en"] body { font-family: var(--font-en); }
+```
+
+### Pretendard Variable (가변 폰트)
+헤드 900·본문 300 등 다양한 웨이트를 단일 파일로 처리. 로드 1회로 모든 웨이트 사용.
+
+```css
+.typography-hero-tagline { font-weight: 900; }
+.typography-body { font-weight: 400; }
+.typography-disclaimer { font-weight: 300; }
 ```
 
 ## CSS 스케일 풀버전
