@@ -7,7 +7,7 @@ description: |
   P3: apple-style landing, scroll-triggered motion, sticky pinning, bento grid, compare matrix, dual tone, color swatch, drawer modal, marquee hover.
   P4: 애플 풀페이지 랜딩 작성시, 스크롤 서사 페이지 필요시, KPI 1장 대시보드시, 마케팅·분석 한장 요약시, 캠페인 복기 1pager시.
   P5: .html, .md.
-  NOT: 단일 화면 UI 설계(→ui-action-designer), 옵시디언 div 래핑(→html-div-style), 일반 마크다운(→obsidian-markdown), 사업전략(→biz-skill), 카피(→copywriting-engine).
+  NOT: 단일 화면 UI 설계(→ui-designer), 옵시디언 div 래핑(→html-div-style), 일반 마크다운(→obsidian-markdown), 사업전략(→biz-skill), 카피(→copywriting-skill).
 "@uses":
   - references/constitution.md
   - references/tone-light.md
