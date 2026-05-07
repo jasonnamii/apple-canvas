@@ -1,201 +1,70 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="ko" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{{TITLE}}</title>
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <style>
-    /* ===== Apple Canvas v1.0 — Bento Scaffold ===== */
-    /* 한국어 폰트 = Pretendard 강제 (CDN 위에서 로드) */
-    :root {
-      --font-en: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
-      /* 한국어 = Pretendard 강제 1순위 */
-      --font-kr: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      --radius-tile: 36px;
-    }
-    :root[data-theme="light"] {
-      --bg: #FFFFFF; --bg-alt: #F5F5F7;
-      --text: #1D1D1F; --headline: #000000;
-      --accent-blue: #0071E3; --accent-green: #00845A; --accent-orange: #CA6B07;
-      --accent-purple: #5E5CE6; --accent-pink: #D74A78;
-      --highlight: rgba(0,113,227,0.15);
-    }
-    :root[data-theme="dark"] {
-      --bg: #000000; --bg-alt: #1D1D1F;
-      --text: #F5F5F7; --headline: #FFFFFF;
-      --accent-blue: #2997FF; --accent-green: #30D158; --accent-orange: #FF9F0A;
-      --accent-purple: #BF5AF2; --accent-pink: #FF375F;
-      --highlight: rgba(41,151,255,0.25);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-kr); background: var(--bg); color: var(--text); min-height: 100vh; padding: 32px; }
-    
-    /* Typography */
-    .typography-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
-    .typography-section-headline { font-size: clamp(40px, 5vw, 64px); font-weight: 900; line-height: 1.1; color: var(--headline); }
-    .typography-headline-super { font-size: clamp(80px, 12vw, 180px); font-weight: 900; line-height: 0.95; letter-spacing: -0.02em; color: var(--headline); }
-    .typography-banner-card-headline { font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; line-height: 1.15; color: var(--headline); }
-    .typography-feature-card-headline { font-size: clamp(20px, 2vw, 28px); font-weight: 700; color: var(--headline); }
-    .typography-tile-headline { font-size: clamp(18px, 1.5vw, 22px); font-weight: 700; }
-    .typography-body { font-size: clamp(15px, 1.2vw, 17px); font-weight: 400; line-height: 1.5; }
-    .typography-body-reduced { font-size: clamp(13px, 1vw, 15px); font-weight: 400; line-height: 1.5; opacity: 0.85; }
-    .typography-disclaimer { font-size: 12px; font-weight: 400; opacity: 0.6; }
-    
-    mark.highlight { background: var(--highlight); color: inherit; padding: 0 4px; border-radius: 4px; }
-    
-    /* Header */
-    .bento-header { max-width: 1440px; margin: 0 auto 32px auto; text-align: center; padding: 16px 0 32px 0; }
-    .bento-header .typography-section-headline { margin-top: 8px; }
-    
-    /* Bento grid */
-    .bento-section { max-width: 1440px; margin: 0 auto; }
-    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .bento-item { padding: 32px; border-radius: var(--radius-tile); background: var(--bg-alt); display: flex; flex-direction: column; gap: 12px; min-height: 240px; position: relative; overflow: hidden; }
-    .bento-item.large-7 { grid-column: span 7; }
-    .bento-item.large-5 { grid-column: span 5; }
-    .bento-item.large-4 { grid-column: span 4; }
-    .bento-item.large-6 { grid-column: span 6; }
-    .bento-item.large-8 { grid-column: span 8; }
-    .bento-item.large-12 { grid-column: span 12; }
-    .bento-item.large-row-2 { grid-row: span 2; }
-    
-    /* Big Number variant */
-    .bento-item.big-number-block { justify-content: center; align-items: flex-start; }
-    .big-number-value { display: inline-block; }
-    .big-number-unit { font-size: 0.5em; vertical-align: super; opacity: 0.7; }
-    .big-number-trend { font-size: 14px; opacity: 0.7; margin-top: 8px; }
-    .big-number-trend.positive { color: var(--accent-green); opacity: 1; }
-    .big-number-trend.negative { color: var(--accent-pink); opacity: 1; }
-    
-    /* Mini chart placeholder */
-    .mini-chart { height: 80px; display: flex; align-items: flex-end; gap: 4px; margin-top: 16px; }
-    .mini-chart-bar { flex: 1; background: var(--accent-blue); border-radius: 4px 4px 0 0; opacity: 0.7; transition: opacity 200ms; }
-    .mini-chart-bar:hover { opacity: 1; }
-    
-    /* Footer */
-    .bento-footer { max-width: 1440px; margin: 32px auto 0 auto; padding: 24px 0; border-top: 1px solid rgba(128,128,128,0.2); }
-    .footnote { font-size: 11px; opacity: 0.6; line-height: 1.6; }
-    
-    /* Visually hidden */
-    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-    
-    /* Focus */
-    :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 4px; border-radius: 4px; }
-    
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-    
-    /* Responsive */
-    @media (max-width: 1067px) {
-      .bento-item[class*="large-"] { grid-column: span 6; }
-      .bento-item.large-12 { grid-column: span 12; }
-    }
-    @media (max-width: 733px) {
-      body { padding: 16px; }
-      .bento-item[class*="large-"] { grid-column: span 12; min-height: 180px; padding: 24px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Canvas — Bento</title>
+<link rel="stylesheet" href="data:text/css;base64,">
+<style>
+/* scaffold-master.html의 :root + 16-scale + .grid-12 + .bento-cell + 형광펜 + gradient-text 가져옴 */
+/* 이 scaffold는 master에 콘텐츠만 추가한 변형. 실 사용시 master의 style 블록 그대로 복붙 */
+</style>
 </head>
 <body>
 
-  <header class="bento-header">
-    <p class="typography-eyebrow">{{EYEBROW}}</p>
-    <h1 class="typography-section-headline">{{TITLE}}</h1>
-  </header>
+<!-- AI gradient SVG def -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="ai-gradient" gradientUnits="userSpaceOnUse">
+<stop offset=".09" stop-color="#fd9700"/><stop offset=".28" stop-color="#f40"/>
+<stop offset=".49" stop-color="#ff2469"/><stop offset=".78" stop-color="#c65cff"/>
+<stop offset="1" stop-color="#0092ff"/>
+</linearGradient></defs></svg>
 
-  <section class="bento-section">
-    <div class="bento-grid">
-      
-      <!-- Box 1: Big Number (대) -->
-      <div class="bento-item large-7 big-number-block" aria-label="주요 메트릭">
-        <p class="typography-eyebrow">{{KPI1_LABEL}}</p>
-        <h2 class="typography-headline-super">
-          <span class="big-number-value" data-countup data-target="{{KPI1_VALUE}}">0</span><span class="big-number-unit">{{KPI1_UNIT}}</span>
-        </h2>
-        <p class="typography-body-reduced">{{KPI1_NOTE}}</p>
-        <p class="big-number-trend positive">▲ {{KPI1_TREND}}</p>
-      </div>
-      
-      <!-- Box 2: 보조 메트릭 + 미니 차트 -->
-      <div class="bento-item large-5">
-        <p class="typography-eyebrow">{{KPI2_LABEL}}</p>
-        <h3 class="typography-banner-card-headline">{{KPI2_VALUE}}</h3>
-        <p class="typography-body-reduced">{{KPI2_NOTE}}</p>
-        <div class="mini-chart" aria-label="추이 차트">
-          <div class="mini-chart-bar" style="height: 30%"></div>
-          <div class="mini-chart-bar" style="height: 50%"></div>
-          <div class="mini-chart-bar" style="height: 40%"></div>
-          <div class="mini-chart-bar" style="height: 70%"></div>
-          <div class="mini-chart-bar" style="height: 60%"></div>
-          <div class="mini-chart-bar" style="height: 85%"></div>
-          <div class="mini-chart-bar" style="height: 95%"></div>
-        </div>
-      </div>
-      
-      <!-- Box 3, 4, 5: KPI 카드 (소) -->
-      <div class="bento-item large-4">
-        <p class="typography-eyebrow">{{KPI3_LABEL}}</p>
-        <h3 class="typography-feature-card-headline">{{KPI3_VALUE}}</h3>
-        <p class="typography-body-reduced">{{KPI3_NOTE}}</p>
-        <p class="big-number-trend">{{KPI3_TREND}}</p>
-      </div>
-      
-      <div class="bento-item large-4">
-        <p class="typography-eyebrow">{{KPI4_LABEL}}</p>
-        <h3 class="typography-feature-card-headline">{{KPI4_VALUE}}</h3>
-        <p class="typography-body-reduced">{{KPI4_NOTE}}</p>
-        <p class="big-number-trend">{{KPI4_TREND}}</p>
-      </div>
-      
-      <div class="bento-item large-4">
-        <p class="typography-eyebrow">{{KPI5_LABEL}}</p>
-        <h3 class="typography-feature-card-headline">{{KPI5_VALUE}}</h3>
-        <p class="typography-body-reduced">{{KPI5_NOTE}}</p>
-        <p class="big-number-trend">{{KPI5_TREND}}</p>
-      </div>
-      
-    </div>
-  </section>
+<main>
+<section aria-labelledby="bento-hero">
+<div class="bento-grid grid-12" style="grid-auto-rows: minmax(240px, auto); gap: 16px;">
 
-  <footer class="bento-footer">
-    <p class="footnote">출처: {{SOURCE}} · 기간: {{PERIOD}} · 산출일: {{DATE}}</p>
-  </footer>
+  <!-- Hero 셀 -->
+  <div class="bento-cell tone-dark large-8" id="bento-hero">
+    <p class="typography-eyebrow">2026 Q4 KPI</p>
+    <h1 class="typography-hero">
+      전년 대비 <span class="gradient-text">6.7배.</span>
+    </h1>
+    <p class="typography-callout" style="margin-top:24px;opacity:.8">압도적 성장. 검증된 모델.</p>
+  </div>
 
-<script>
-// CountUp 애니메이션
-function countUp(el, target, duration = 1500) {
-  let start = null;
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-    el.textContent = Math.floor(eased * target).toLocaleString();
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
+  <!-- Big Number 셀 -->
+  <div class="bento-cell tone-bordered large-4" aria-label="매출">
+    <p class="typography-eyebrow">매출</p>
+    <p class="big-number">1000<span class="unit">억</span></p>
+  </div>
 
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      countUp(e.target, +e.target.dataset.target);
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.5 });
+  <!-- 컬러 셀 (vivid) -->
+  <div class="bento-cell tone-colored-pink large-4" aria-label="신규고객">
+    <p class="typography-eyebrow" style="color:white;opacity:.85">신규고객</p>
+    <p class="big-number" style="color:white">3.7<span class="unit">배</span></p>
+  </div>
 
-document.querySelectorAll('[data-countup]').forEach(el => io.observe(el));
+  <!-- 형광펜 셀 -->
+  <div class="bento-cell tone-dark large-8">
+    <p class="typography-eyebrow">하이라이트</p>
+    <h2 class="typography-section">
+      <span class="highlight-wrapper highlight-pink">압도적</span> 성장.
+      <span class="highlight-wrapper highlight-mint">검증된</span> 수익 모델.
+      <span class="highlight-wrapper highlight-yellow">다음 단계</span>로.
+    </h2>
+  </div>
 
-// Reduced motion
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('[data-countup]').forEach(el => {
-    el.textContent = (+el.dataset.target).toLocaleString();
-  });
-}
-</script>
+  <!-- 가로 차트 셀 -->
+  <div class="bento-cell tone-bordered large-12">
+    <p class="typography-eyebrow">월별 추이</p>
+    <h3 class="typography-headline">12개월 연속 상승.</h3>
+    <!-- 차트 placeholder -->
+    <div style="height:120px;background:var(--ai-gradient);border-radius:12px;margin-top:24px;opacity:.85"></div>
+  </div>
 
+</div>
+</section>
+</main>
 </body>
 </html>

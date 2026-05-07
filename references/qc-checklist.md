@@ -1,47 +1,78 @@
-# QC — 7층 체크리스트
+# QC Checklist — H1~H12 자동 검증
 
-송출 직전 자가 검사. 1+개 위반 = STOP + 재작성.
-
-## 7층 스코어카드
-
-| # | 층 | 체크 항목 | 위반 시 |
-|---|---|---|---|
-| 1 | 헌법 | H1~H7 모두 통과 | FAIL |
-| 2 | 모드 | 형에게 모드(스크롤/Bento/Mix) 질문했나 | 경고 |
-| 3 | 스크롤 | 비디오·스티키·핀 1+개 (스크롤 모드) | FAIL |
-| 4 | 데이터 | Bento·Compare·Big Number 1+개 | 경고 |
-| 5 | 인터랙션 | Tile-BOC·Drawer·Swatch·Hover 1+개 | 경고 |
-| 6 | 접근성 | aria-label 100% + reduced-motion 분기 | FAIL |
-| 7 | 타이포 | 16단계 시맨틱+시각 이중 클래스 | 경고 |
-
-## 자동 검증 스크립트
+## bash 스크립트
 
 ```bash
 #!/bin/bash
 FILE=$1
+PASS=0
+FAIL=0
 
-# H1 듀얼 톤
-if ! grep -q 'theme-light\|theme-dark' "$FILE"; then echo "❌ H1: theme 클래스 없음"; fi
+# H1 듀얼톤
+if ! grep -qE 'theme-light|theme-dark|data-theme="light"|data-theme="dark"' "$FILE"; then
+  echo "❌ H1: theme 정의 없음"; ((FAIL++))
+else echo "✅ H1: 듀얼톤"; ((PASS++)); fi
 
-# H7 접근성
-ARIA_COUNT=$(grep -c 'aria-label' "$FILE")
-if [ "$ARIA_COUNT" -lt 5 ]; then echo "❌ H7: aria-label 5개 미만"; fi
+# H8 채도 게이트 통일 (양쪽 S≥85% — Candy hex)
+if grep -qE '#2997FF|#30D158|#FF9F0A|#FF375F|#0071E3|#00845A' "$FILE"; then
+  echo "❌ H8: 차분 시스템컬러 사용 → Candy hex로 교체"; ((FAIL++))
+else echo "✅ H8: 채도 게이트"; ((PASS++)); fi
 
-if ! grep -q 'prefers-reduced-motion' "$FILE"; then echo "❌ H7: reduced-motion 분기 없음"; fi
+# H9 파스텔 워시
+if grep -qE 'background:\s*#[E-F][0-9A-F]{5}' "$FILE"; then
+  echo "❌ H9: 파스텔 워시 의심 (S<30% L>90%)"; ((FAIL++))
+else echo "✅ H9: 카드 배경"; ((PASS++)); fi
 
-# H4 스크롤
-if grep -q 'scaffold-scroll' "$FILE" && ! grep -qE 'sticky|inline-media-play|parallax' "$FILE"; then
-  echo "❌ H4: 스크롤 모드인데 서사 장치 없음"
+# H10 빈 sticky
+STICKY=$(grep -c 'sticky-container' "$FILE")
+STATE=$(grep -c 'sticky-content\|focus-expression\|state-' "$FILE")
+if [ "$STICKY" -gt "$STATE" ]; then
+  echo "❌ H10: sticky-container($STICKY) > 콘텐츠 state($STATE)"; ((FAIL++))
+else echo "✅ H10: sticky 콘텐츠"; ((PASS++)); fi
+
+# H11 Frame Sandwich
+INLINE=$(grep -c 'data-inline-media' "$FILE")
+FRAMES=$(grep -c 'start-frame\|fallback-frame' "$FILE")
+if [ "$INLINE" -gt 0 ] && [ "$FRAMES" -lt $((INLINE * 2)) ]; then
+  echo "❌ H11: inline-media에 start/fallback 누락"; ((FAIL++))
+else echo "✅ H11: Frame Sandwich"; ((PASS++)); fi
+
+# H12 인라인 강조
+if grep -qE 'text-decoration:\s*underline' "$FILE"; then
+  echo "⚠ H12: text-decoration:underline → SVG path 또는 strip 권장"
 fi
 
-# H5 데이터
-if ! grep -qE 'bento|compare|big-number|headline-super' "$FILE"; then
-  echo "⚠️ H5: 데이터 시각화 패턴 없음"
+# H7 A11Y
+ARIA=$(grep -c 'aria-label\|aria-labelledby' "$FILE")
+if [ "$ARIA" -lt 5 ]; then echo "❌ H7: aria-label 5개 미만 ($ARIA)"; ((FAIL++))
+else echo "✅ H7: ARIA"; ((PASS++)); fi
+if ! grep -q 'prefers-reduced-motion' "$FILE"; then
+  echo "❌ H7: reduced-motion 분기 없음"; ((FAIL++))
 fi
 
-echo "✅ QC 통과"
+# Apple-easing 강제
+if grep -qE 'transition.*ease[^-]\|transition.*ease-in-out\|transition.*ease-out\|transition.*ease-in' "$FILE"; then
+  echo "❌ Easing: cubic-bezier(0.4, 0, 0.2, 1) 강제"
+fi
+
+# 5스톱 그라디언트 1회만 (Premium Restraint H5)
+STOPS=$(grep -c 'linearGradient\|linear-gradient.*,.*,.*,.*,' "$FILE")
+if [ "$STOPS" -gt 1 ]; then
+  echo "⚠ H5: multi-stop $STOPS회 (Premium Restraint = 1회만)"
+fi
+
+echo ""
+echo "===== QC 결과: PASS $PASS / FAIL $FAIL ====="
 ```
 
-## 송출 게이트
-형에게 질문:
-"🔍 송출 전 검토 부탁드려요. 모드는 [스크롤/Bento/Mix], 톤은 [라이트/다크/듀얼]. 7층 QC 통과. [OK / 수정 / 재작성]"
+## 사용
+
+```bash
+chmod +x qc-check.sh
+./qc-check.sh output.html
+```
+
+## 통과 기준
+
+- FAIL = 0
+- 경고는 사용 의도 있으면 OK

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Canvas v3.0 — Master Scaffold</title>
+<style>
+/* ═══════════════════════════════════════════════
+   Apple Canvas v3.0 — Master Scaffold
+   4계층 결정값을 :root[data-theme] · class로 주입
+═══════════════════════════════════════════════ */
+
+/* ① TONE — 양쪽 동일 hex (H8) */
+:root[data-theme="light"], :root[data-theme="dark"] {
+  --accent-blue:   #0092ff;
+  --accent-pink:   #FF1F6F;
+  --accent-yellow: #FFCB05;
+  --accent-green:  #00C853;
+  --accent-orange: #FF7A1A;
+  --accent-purple: #C65CFF;
+  --imac-blue: #3DB3FF;
+  --imac-purple: #C65CFF;
+  --imac-pink: #FF1F6F;
+  --imac-orange: #FF7A1A;
+  --imac-yellow: #FFCB05;
+  --imac-green: #4DD964;
+  --hl-pink:   #ff5e8a;
+  --hl-yellow: #ffd93d;
+  --hl-mint:   #4ecdc4;
+  --hl-coral:  #ff8a5b;
+  --hl-lilac:  #b980f0;
+  --ai-gradient: linear-gradient(90deg, #fd9700 0%, #f40 28%, #ff2469 49%, #c65cff 78%, #0092ff 100%);
+  --hl-strip: linear-gradient(180deg, transparent 55%, currentcolor 55%);
+  --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.3s;
+  --dur-mid: 0.4s;
+  --dur-slow: 0.6s;
+}
+:root[data-theme="light"] {
+  --bg: #FFFFFF; --bg-alt: #F5F5F7;
+  --text: #1D1D1F; --headline: #000000;
+  --shadow-card: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-vivid: 0 12px 32px rgba(255,31,111,0.18);
+}
+:root[data-theme="dark"] {
+  --bg: #0a0a0f; --bg-alt: #1D1D1F;
+  --text: #F5F5F7; --headline: #FFFFFF;
+  --accent-blue: #3DB3FF; --accent-green: #4DD964;
+  --shadow-card: 0 12px 32px rgba(0,0,0,0.6);
+  --glow-pink:   0 0 32px rgba(255,31,111,0.5);
+  --glow-yellow: 0 0 32px rgba(255,203,5,0.5);
+  --glow-blue:   0 0 32px rgba(61,179,255,0.5);
+}
+
+/* ④ EMPHASIS — 16-Scale */
+:root {
+  --t-eyebrow: 12px;
+  --t-body: 17px;
+  --t-callout: 21px;
+  --t-headline: 28px;
+  --t-section: 40px;
+  --t-section-large: 48px;
+  --t-hero: 64px;
+  --t-hero-large: 80px;
+  --t-hero-xl: 96px;
+  --t-hero-super: 200px;
+}
+
+/* Reset · Body */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--t-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ③ STRUCTURE — 4단 위계 */
+.typography-eyebrow {
+  font-size: var(--t-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-pink);
+}
+.typography-hero { font-size: var(--t-hero); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--headline); }
+.typography-hero-large { font-size: var(--t-hero-large); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--headline); }
+.typography-hero-super { font-size: clamp(80px, 14vw, 200px); font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; color: var(--headline); }
+.typography-section { font-size: var(--t-section); font-weight: 600; line-height: 1.15; color: var(--headline); }
+.typography-section-large { font-size: var(--t-section-large); font-weight: 600; line-height: 1.1; color: var(--headline); }
+.typography-callout { font-size: var(--t-callout); font-weight: 500; color: var(--text); }
+.typography-body { font-size: var(--t-body); color: var(--text); }
+.typography-body-large { font-size: 19px; color: var(--text); }
+
+/* ② LAYOUT — 12-grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.large-12 { grid-column: span 12; }
+.large-10 { grid-column: span 10; }
+.large-8  { grid-column: span 8; }
+.large-7  { grid-column: span 7; }
+.large-6  { grid-column: span 6; }
+.large-5  { grid-column: span 5; }
+.large-4  { grid-column: span 4; }
+.large-3  { grid-column: span 3; }
+.large-offset-1 { grid-column-start: 2; }
+.large-offset-2 { grid-column-start: 3; }
+
+@media (max-width: 734px) {
+  .large-12, .large-10, .large-8, .large-7, .large-6, .large-5, .large-4, .large-3 { grid-column: span 12; }
+}
+
+section { padding-block: clamp(80px, 12vh, 160px); }
+
+/* ④ EMPHASIS — gradient-text 5단위 */
+.gradient-text {
+  background: var(--ai-gradient);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* 형광펜 5색 strip */
+.highlight-wrapper {
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.1em;
+  background-image: linear-gradient(180deg, transparent 55%, currentcolor 55%);
+}
+.highlight-pink   { color: var(--hl-pink); }
+.highlight-yellow { color: var(--hl-yellow); }
+.highlight-mint   { color: var(--hl-mint); }
+.highlight-coral  { color: var(--hl-coral); }
+.highlight-lilac  { color: var(--hl-lilac); }
+
+/* Big-Number */
+.big-number {
+  font-size: clamp(64px, 10vw, 160px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent-pink);
+}
+.big-number .unit { font-size: 0.4em; opacity: 0.7; margin-left: 0.2em; font-weight: 500; }
+
+/* Bento */
+.bento-cell {
+  border-radius: 24px;
+  padding: 48px;
+  min-height: 360px;
+  transition: transform var(--dur-mid) var(--ease-apple);
+}
+.bento-cell:hover { transform: translateY(-4px); box-shadow: var(--shadow-vivid); }
+.tone-dark { background: var(--bg-alt); color: var(--text); }
+.tone-bordered { border: 1px solid #d2d2d7; background: var(--bg); }
+.tone-colored-pink { background: var(--accent-pink); color: white; }
+.tone-colored-blue { background: var(--accent-blue); color: white; }
+.tone-colored-green { background: var(--accent-green); color: white; }
+
+/* Sticky Chip Hero */
+.sticky-container { position: relative; }
+.sticky-content { position: sticky; top: 0; min-height: 100vh; display: grid; place-items: center; }
+
+/* Divider */
+.divider-vivid {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+  margin: 80px 0;
+  border: none;
+}
+
+/* Tile / Button */
+.btn, button.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-radius: 980px;
+  background: var(--accent-blue);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: transform var(--dur-fast) var(--ease-apple);
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); }
+
+/* H7 — A11Y */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- 5스톱 그라디언트 SVG def (H5: 페이지당 1회) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ai-gradient" gradientUnits="userSpaceOnUse">
+      <stop offset=".09" stop-color="#fd9700"/>
+      <stop offset=".28" stop-color="#f40"/>
+      <stop offset=".49" stop-color="#ff2469"/>
+      <stop offset=".78" stop-color="#c65cff"/>
+      <stop offset="1"   stop-color="#0092ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<main>
+  <!-- 콘텐츠는 mode 파일별 골격 참조 -->
+  <!-- mode-bento.md / mode-scroll.md / mode-mix.md / mode-cinematic.md / mode-pt-monolith.md -->
+</main>
+
+</body>
+</html>
