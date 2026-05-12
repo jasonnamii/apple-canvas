@@ -48,14 +48,18 @@ license: Proprietary. Personal use.
 
 ## ⓪ INTENT — 1계층 의사결정
 
-| 의도 | 디폴트 |
-|---|---|
-| **PITCH** 설득 (BP·제안서·매니페스토) | Cinematic + Dark + LV3 |
-| **REPORT** 정보집약 (KPI·분석·복기) | Bento + Light + LV3 |
-| **STORY** 서사 (제품런칭·캠페인) | Scroll + Dual + LV3 |
-| **REFERENCE** 카탈로그 (벤치마킹·DB) | Mix + Light + LV2 |
+| 의도 | 디폴트 (Layout+Tone+LV) | Density | Temperature |
+|---|---|:-:|---|
+| **PITCH** 설득 (BP·제안서·매니페스토) | Cinematic + Dark + LV3 | 4 | cold/neutral |
+| **REPORT** 정보집약 (KPI·분석·복기) | Bento + Light + LV3 | 4 | cold |
+| **STORY** 서사 (제품런칭·캠페인) | Scroll + Dual + LV3 | 2 | hot/warm |
+| **REFERENCE** 카탈로그 (벤치마킹·DB) | Mix + Light + LV2 | 5 | neutral/quiet |
 
-→ INTENT만 묻고 디폴트로 빌드. TONE·LAYOUT·EMPHASIS는 자동. 필요 시 형이 후조정.
+→ INTENT만 묻고 디폴트로 빌드. TONE·LAYOUT·EMPHASIS·Density·Temperature 모두 자동. 형 명시 시 override.
+
+**Density 1~5**: 1=iconic·minimal / 2=brand narrative / 3=structured / 4=evidence-heavy / 5=decision document. 디자인 강도는 Density에 *맞춰*: evidence-heavy를 lifestyle로 ✗·emotional을 dashboard로 ✗.
+
+**Temperature**: cold(analytical)·neutral(institutional)·warm(human)·hot(campaign)·quiet(museum). 비비드 풀강(LV3)이라도 *온도*는 따로. 같은 LV3에 cold(데이터)·hot(캠페인)은 다른 산출물.
 
 ---
 
@@ -198,6 +202,36 @@ bash references/qc-checklist.md
 | 부록·헌장 단순 라벨에 거대 헤드라인 | `.section-title.compact` 36-56px |
 | **회색 텍스트 흐림 (light/dark 양쪽)** | secondary는 본문 다음으로 잘 보여야. tertiary는 라벨 기능. WCAG AA 미달 회색 ✗ — `→ axis-1-color.md` SSOT 토큰 사용 |
 | **C8 신호색** | `#07ED21` (Cre8orClub). 브랜드 컨텍스트 한정·솔리드 1개로만·gradient 혼합 ✗ |
+| **AI 평균값 클리셰** | 검은 배경 디폴트·neon gradient·glowing orb·glass card 남용·centered hero only·identical 3카드 그리드·fake dashboard. *디자인이 평균 SaaS 랜딩처럼 되면 INTENT부터 재선택* |
+| **섹션 반복** | 같은 구조 2회 이상 ✗. 카드 → 다이어그램 → 테이블 → 에디토리얼 블록 등 *섹션마다 다른 전달 방식* |
+| **"못생겨도 되는 영역"** | tables·captions·footnotes·spec readout·legal note는 decoration ✗. evidence-heavy(Density 4~5)는 *예쁨보다 신뢰감*. LV3 풀강 ≠ 모든 영역 강 |
+
+---
+
+## Typography Roles (16스케일에 *역할* 매핑)
+
+| 역할 | 의미 | 16스케일 위치 |
+|---|---|---|
+| Voice | 주 감정·개념 statement (Hero·Big Number) | 200px+·PT·display |
+| System | 라벨·내비·메타데이터 (eyebrow·label) | 12~14px |
+| Reading | 본문 (verbatim 보존 영역) | 17~21px body |
+| Evidence | 수치·캡션·각주·footnote | 12~15px·mono |
+| Accent | 제한적 강조 (gradient-text·형광펜) | 페이지당 1~2회 |
+
+→ 폰트 *선택*보다 *역할 분리*가 본질. 같은 SF Pro라도 Voice·System·Evidence는 *다르게 행세*.
+
+## Color Roles (기존 토큰에 *역할* 라벨)
+
+| 역할 | apple 토큰 |
+|---|---|
+| ground | `--bg`·`--bg-alt` |
+| text | `--text`·`--text-secondary`·`--text-tertiary`·`--headline` |
+| authority | `--text`·`--headline` (검정 본문) |
+| signal | `--accent-blue`·`--accent-pink`·`--c8` (한 페이지 1개만) |
+| culture | iMac 7색·형광펜 5색 |
+| depth | `--shadow-card`·`--bg-alt`·`--imac-silver` |
+
+→ "예쁜 색"이 아니라 *역할*로 선택. signal은 페이지당 1개. culture는 브랜드 정체성·signal과 분리.
 
 ---
 
