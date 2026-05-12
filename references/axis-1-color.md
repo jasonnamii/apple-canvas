@@ -33,7 +33,7 @@
 --imac-orange: #FF7A1A;
 --imac-yellow: #FFCB05;
 --imac-green:  #4DD964;
---imac-silver: #86868B;  /* light: #86868B, dark: #A1A1A6 */
+--imac-silver: #4a4a52;  /* v: contrast↑ light. dark: #c8c8d0 */
 ```
 
 ## 3. 형광펜 5색 (K12 박제·strip 패턴)
@@ -74,12 +74,16 @@
 :root[data-theme="light"] {
   --bg: #FFFFFF; --bg-alt: #F5F5F7;
   --text: #1D1D1F; --headline: #000000;
+  --text-secondary: #2c2c34;   /* v: contrast↑ for visibility */
+  --text-tertiary:  #5a5a62;   /* v: contrast↑ for visibility */
   --shadow-card: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
   --shadow-vivid: 0 12px 32px rgba(255,31,111,0.18);
 }
 :root[data-theme="dark"] {
   --bg: #0a0a0f; --bg-alt: #1D1D1F;
   --text: #F5F5F7; --headline: #FFFFFF;
+  --text-secondary: #c8c8d0;   /* v: contrast↑ for visibility */
+  --text-tertiary:  #9a9aa2;   /* v: contrast↑ for visibility */
   --glow-pink:   0 0 32px rgba(255,31,111,0.5);
   --glow-yellow: 0 0 32px rgba(255,203,5,0.5);
   --glow-blue:   0 0 32px rgba(61,179,255,0.5);
@@ -88,7 +92,22 @@
 }
 ```
 
-## 6. 금기
+## 6. C8 신호색 (Cre8orClub)
+
+```css
+:root[data-theme="light"], :root[data-theme="dark"] {
+  --c8:      #07ED21;   /* Cre8orClub neon green */
+  --c8-soft: #4DFF5E;   /* lifted for dark surfaces */
+  --c8-deep: #06B81A;   /* anchored for light surfaces */
+  --c8-ink:  #04140A;   /* paired text on c8 fill */
+}
+```
+
+- 브랜드 컨텍스트(Cre8orClub) 한정 사용
+- 솔리드 1개로만 사용·gradient·5스톱 혼합 ✗
+- 다크에서는 `--c8` 또는 `--c8-soft` 사용
+
+## 7. 금기
 
 ```
 ❌ #0071E3·#00845A·#2997FF·#30D158·#FF9F0A·#FF375F (S<70% 차분 시스템컬러)
