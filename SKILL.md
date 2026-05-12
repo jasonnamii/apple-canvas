@@ -1,7 +1,7 @@
 ---
 name: apple-canvas
 description: |
-  Apple Canvas. apple.com 박제 → 의사결정 트리·헌법 7개·5모드. 비비드 풀채도(S≥85%)·형광펜 5색·gradient-text 5스톱·PT빅타이포·Frame Sandwich. 한국어 4단계 타이포·반응형 4단·SVG 다이어그램 기하·본문 verbatim 보존. 이미지 없이 애플급 강도 발현. C8 (#07ED21) 신호색 지원.
+  Apple Canvas. apple.com 박제 → 의사결정 트리·헌법 7개·5모드. 비비드 풀채도(S≥85%)·형광펜 5색·gradient-text 5스톱·PT빅타이포·Frame Sandwich. 한국어 4단계 타이포·반응형 4단·SVG 다이어그램 기하·본문 verbatim 보존, 시각효과카탈로그, 레이아웃카탈로그. 이미지 없이 애플급 강도 발현. C8 (#07ED21) 신호색 지원.
   P1: 애플캔버스, apple canvas, 애플웹, 애플랜딩, KPI한장, 대시보드, 벤또, 1pager, 듀얼톤, Bento, 빅넘버, 16단계타이포, 형광펜, gradient-text, 5스톱, PT모놀리스, 빅타이포, 비비드, 한장PT, 한국어타이포, 반응형, 다이어그램, 본문보존, C8, 모션카탈로그, motion catalog, scroll scrub, sticky hero, mask reveal, reduced-motion, 접근성.
   P2: 애플처럼만들어줘, 디자인해줘, 시각화해줘, 랜딩만들어줘, build apple page, design like apple, 한국어로, 모바일 반응형, 본문 보존 시각화.
   P3: apple-style landing, gradient-text, frame sandwich, PT monolith, bento grid, korean typography, prose preservation.
@@ -25,6 +25,8 @@ description: |
   - references/diagram-geometry.md
   - references/prose-preservation.md
   - references/motion-catalog.md
+  - references/visual-effects-catalog.md
+  - references/layout-catalog.md
   - modes/mode-bento.md
   - modes/mode-scroll.md
   - modes/mode-mix.md
@@ -207,6 +209,9 @@ bash references/qc-checklist.md
 | **섹션 반복** | 같은 구조 2회 이상 ✗. 카드 → 다이어그램 → 테이블 → 에디토리얼 블록 등 *섹션마다 다른 전달 방식* |
 | **"못생겨도 되는 영역"** | tables·captions·footnotes·spec readout·legal note는 decoration ✗. evidence-heavy(Density 4~5)는 *예쁨보다 신뢰감*. LV3 풀강 ≠ 모든 영역 강 |
 | **모션 카탈로그** | 11분류 50+ 패턴·Apple 13 어휘·강도 0~5·duration/easing 표·reduced-motion 폴백 — 정답 ✗·*어휘 사전* → `→ references/motion-catalog.md`. 기존 motion-* refs와 *병행 호환* |
+| **시각효과 카탈로그** | 9 계열 50+ 효과·Apple 10 어휘·조합 레시피 5종·Anti-AI — *어휘 사전·정답 ✗* → `→ references/visual-effects-catalog.md` |
+| **레이아웃 카탈로그** | 10 계열 50+ archetype·Apple 8 패턴·조합 레시피·Anti-Generic·기존 박제 인덱싱 — *어휘 사전·정답 ✗* → `→ references/layout-catalog.md` |
+| **한 페이지 = 다른 레이아웃 mix** | Hero → Explanation → Evidence → Decision → CTA. *같은 archetype 2회 이상 반복 ✗*. 모든 섹션 카드 그리드 ✗ |
 | **모션 강약 분포** | 한 페이지 안 *모든 섹션 같은 강도 ✗*. 1개 섹션만 페이지 최대 강도 N, 2~3개 N-1, 나머지 N-2 이하, 1+ 정적 영역 의무 (Density 3+ 적용) |
 | **AI 평균값 모션 클리셰** | 모든 카드 같은 hover·모든 섹션 같은 fade up·particle·constant gradient·neon glow·cursor follow·bouncy easing·blur text reveal — 의미 없는 모션 = 제거 |
 | **reduced-motion 폴백** | 모든 HTML 산출물 `@media (prefers-reduced-motion: reduce)` 의무. parallax·scroll scrub·zoom·3D tilt 비활성화·fade로 대체. 위반 = 접근성 FAIL |
