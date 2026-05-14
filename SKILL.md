@@ -150,7 +150,7 @@ license: Proprietary. Personal use.
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.highlight-pink { background: linear-gradient(180deg, transparent 55%, #ff5e8a 55%); }
+.hl.hl-pink { background-color: #FF7AB6; color: #0A0A0C; padding: 0 6px; border-radius: 999px; box-decoration-break: clone; }
 ```
 
 **한국어 Hero**
@@ -190,7 +190,7 @@ bash references/qc-checklist.md
 |---|---|
 | 라이트=차분 / 다크=비비드 이원화 | 양쪽 동일 hex. 다크는 glow만 |
 | 5스톱 그라디언트 페이지 다회 | H3 Premium Restraint. 1회만 |
-| 형광펜에 `text-decoration` | SVG path + clipPath 또는 strip만 |
+| 형광펜에 `text-decoration` | SVG path + clipPath만 (형광펜 자체는 `.hl` rounded-pill) |
 | sticky 250vh 빈 공간 | 다중 state 콘텐츠 강제 |
 | inline-media 1프레임만 | start/end/fallback 3프레임 |
 | MS워드 룩 (회색 테이블·강약 ✗) | LV3 풀강 디폴트 |
@@ -248,3 +248,15 @@ bash references/qc-checklist.md
 ## Forbidden 요약
 
 라이트 차분 시스템컬러·파스텔 워시·순흑 그라디언트·2스톱 그라디언트·5스톱 페이지 다회·sticky 빈 공간·inline-media 1프레임·`text-decoration: underline`·MS워드 룩·허여멀건/강약없는 디자인·한국어 PT에 keep-all 누락·wrap/prose 정렬선 불일치·단일 미디어 쿼리·산문체 → 표/블릿·SVG marker 노드 안 침범. 상세: `→ references/forbidden.md`
+
+
+## 안전성 · 접근성 (v1.1)
+
+| 항목 | 상태 |
+|---|---|
+| innerHTML | dotnav 컨트롤 정적 템플릿 → `// SAFE-innerHTML:` 주석 박제 |
+| `:focus-visible` | scaffold-master/bento/scroll 3 파일 모두 박제 (이전 master만 있던 것 보강) |
+| `prefers-reduced-motion` | references 전반 23 hits — 기존 강함 |
+| SVG aria | inline SVG `aria-hidden="true"` 일관 적용 (기존) |
+
+NOT: motion·layout·visual-effects 카탈로그는 별도 스킬에서 관리.

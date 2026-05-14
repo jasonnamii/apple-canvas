@@ -37,8 +37,8 @@
   <div class="bento-cell tone-dark large-8">
     <p class="typography-eyebrow">하이라이트</p>
     <h2 class="typography-section">
-      <span class="highlight-wrapper highlight-pink">압도적 성장.</span>
-      <span class="highlight-wrapper highlight-mint">검증된 수익 모델.</span>
+      <span class="hl hl-pink hl-block">압도적 성장.</span>
+      <span class="hl hl-green hl-block">검증된 수익 모델.</span>
     </h2>
   </div>
 </section>

@@ -54,6 +54,7 @@
   const dotnav = document.createElement('nav');
   dotnav.className = 'deck-dotnav';
   dotnav.setAttribute('aria-label', '슬라이드 네비게이션');
+  // SAFE-innerHTML: static template, only index `i` interpolated. No user input. XSS-safe.
   dotnav.innerHTML = stages.map((_, i) =>
     `<button class="deck-dotnav-item" data-stage-idx="${i}" aria-label="슬라이드 ${i + 1}"></button>`
   ).join('');

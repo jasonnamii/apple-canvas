@@ -15,20 +15,29 @@ iMac은 제품 SKU별로 7색 스펙트럼을 매핑. apple-canvas는 이를 **�
 
 **Silver는 회색 예외** — 본문·텍스트에 사용 ✗. 메타·구분자만.
 
-## 형광펜
-핵심 단어를 **형광펜으로 강조**. 회색 ✗.
+## 형광펜 (`.hl` rounded-pill)
+핵심 단어를 **형광펜으로 강조**. strip 방식·`<mark>` 직접 스타일링·opacity 톤다운 ✗. 본문·헤드라인·히어로 전 위계 사용 ○.
 
 ```html
-<p>이 제품은 <mark class="highlight">놀라운 성능</mark>을 제공합니다.</p>
+<p>이 제품은 <span class="hl hl-pink hl-tight">놀라운 성능</span>을 제공합니다.</p>
 ```
 
 ```css
-mark.highlight {
-  background: var(--highlight); /* light: rgba(0,113,227,0.15) / dark: rgba(41,151,255,0.25) */
-  color: inherit;
-  padding: 0 4px;
-  border-radius: 4px;
+/* 토큰·유틸 풀 사양: → references/axis-6-emphasis.md §1 */
+.hl {
+  background-color: var(--hl-yellow);
+  color: var(--hl-ink);
+  -webkit-text-fill-color: var(--hl-ink);
+  padding: 0 6px;
+  border-radius: 999px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
+.hl-yellow { background-color: var(--hl-yellow); }
+.hl-green  { background-color: var(--hl-green); }
+.hl-c8     { background-color: var(--hl-c8); }
+.hl-pink   { background-color: var(--hl-pink); }
+.hl-blue   { background-color: var(--hl-blue); }
 ```
 
 ## 페이지당 액센트 사용 규칙

@@ -21,9 +21,12 @@
 
 ## 타이포·강조
 ```
-❌ text-decoration: underline (H12) — SVG path 또는 strip만
+❌ text-decoration: underline (H12) — SVG path만
 ❌ 16스케일 외 임의 size (22px·30px 등)
 ❌ 헤드라인-바디 사이 강약 ✗ (최소 2.5배 차이 강제)
+❌ 형광펜 strip 방식 (linear-gradient 180deg transparent 55%) — `.hl` rounded-pill만
+❌ 형광펜 구 클래스 (.highlight-wrapper·.highlight-pink·.highlight-mint·.highlight-coral·.highlight-lilac) — `.hl`로 단일 통일
+❌ 형광펜 opacity·color-mix 톤다운 — 라이트·다크 동일 비비드 강제
 ❌ 형광펜 6색 이상 (5색 카탈로그 강제)
 ❌ gradient-text를 body에 (Hero/Eyebrow/Span/List/Inline 5단위만)
 ```

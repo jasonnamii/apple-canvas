@@ -8,6 +8,13 @@
 <style>
 /* scaffold-master.html의 :root + 16-scale + .grid-12 + .bento-cell + 형광펜 + gradient-text 가져옴 */
 /* 이 scaffold는 master에 콘텐츠만 추가한 변형. 실 사용시 master의 style 블록 그대로 복붙 */
+
+/* a11y :focus-visible — 키보드 포커스 전용 outline */
+:focus-visible {
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 </style>
 </head>
 <body>
@@ -49,9 +56,9 @@
   <div class="bento-cell tone-dark large-8">
     <p class="typography-eyebrow">하이라이트</p>
     <h2 class="typography-section">
-      <span class="highlight-wrapper highlight-pink">압도적</span> 성장.
-      <span class="highlight-wrapper highlight-mint">검증된</span> 수익 모델.
-      <span class="highlight-wrapper highlight-yellow">다음 단계</span>로.
+      <span class="hl hl-pink hl-block">압도적</span> 성장.
+      <span class="hl hl-green hl-block">검증된</span> 수익 모델.
+      <span class="hl hl-yellow hl-block">다음 단계</span>로.
     </h2>
   </div>
 

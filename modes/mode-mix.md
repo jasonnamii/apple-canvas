@@ -27,7 +27,7 @@
   <section class="scroll-section section-narrative" data-theme="dark">
     <h2 class="typography-section">왜 이 결과인가.</h2>
     <p class="typography-body">
-      <span class="highlight-wrapper highlight-pink">3가지 이유.</span>
+      <span class="hl hl-pink hl-block">3가지 이유.</span>
     </p>
   </section>
   

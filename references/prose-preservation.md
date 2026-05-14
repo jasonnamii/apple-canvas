@@ -57,7 +57,7 @@ apple-canvas가 산문체 본문(prose)을 받았을 때, **본문 100% verbatim
 
 ### 룰 3 — 인라인 강조 (형광펜·gradient-text)
 
-본문 **안**에서 단어·구절 강조는 인라인 SVG strip 형광펜만. 표·블릿으로 변환 ✗.
+본문 **안**에서 단어·구절 강조는 인라인 `.hl` rounded-pill 형광펜 또는 gradient-text만. 표·블릿으로 변환 ✗. strip 방식 ✗.
 
 ```html
 <p>

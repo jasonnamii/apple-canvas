@@ -36,19 +36,18 @@
 --imac-silver: #4a4a52;  /* v: contrast↑ light. dark: #c8c8d0 */
 ```
 
-## 3. 형광펜 5색 (K12 박제·strip 패턴)
+## 3. 형광펜 5색 (`.hl` rounded-pill — 단일 정본)
 
 ```css
---hl-pink:   #ff5e8a;   /* highlight-pink */
---hl-yellow: #ffd93d;   /* highlight-yellow */
---hl-mint:   #4ecdc4;   /* highlight-mint/green */
---hl-coral:  #ff8a5b;   /* highlight-coral/orange */
---hl-lilac:  #b980f0;   /* highlight-lilac/purple */
+/* 비비드 풀채도. 라이트·다크 동일 fill·--hl-ink 검정 텍스트 강제. */
+--hl-yellow: #F0F921;   /* 기본·강조 */
+--hl-green:  #C6F432;   /* 성능·가능성 */
+--hl-c8:     #07ED21;   /* C8 신호·Cre8orClub */
+--hl-pink:   #FF7AB6;   /* 가치·핵심 */
+--hl-blue:   #6FB0FF;   /* 도구·연결 */
+--hl-ink:    #0A0A0C;   /* 형광펜 위 텍스트 — 라이트·다크 공통 */
 
-/* 또는 K12 정본 5색: */
-/* pink #ff2469·green #09b54e·blue #0092ff·purple #c65cff·orange #fd9700 */
-
---hl-strip: linear-gradient(180deg, transparent 55%, currentcolor 55%);
+/* strip 방식(linear-gradient 50%) 폐기. .hl 클래스 = 풀 fill + padding + border-radius */
 ```
 
 상세 사용법: `→ references/axis-6-emphasis.md`

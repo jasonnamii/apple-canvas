@@ -7,6 +7,13 @@
 <style>
 /* scaffold-master.html의 :root 변수 + class 가져옴 */
 /* 실 사용시 master의 <style> 블록 통째 복붙 */
+
+/* a11y :focus-visible — 키보드 포커스 전용 outline */
+:focus-visible {
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 </style>
 </head>
 <body>
@@ -71,9 +78,9 @@
     <div class="large-10 large-offset-1">
       <p class="typography-eyebrow">하이라이트</p>
       <h2 class="typography-section-large">
-        <span class="highlight-wrapper highlight-pink">속도.</span>
-        <span class="highlight-wrapper highlight-mint">정확도.</span>
-        <span class="highlight-wrapper highlight-yellow">개인정보 보호.</span>
+        <span class="hl hl-pink hl-block">속도.</span>
+        <span class="hl hl-green hl-block">정확도.</span>
+        <span class="hl hl-yellow hl-block">개인정보 보호.</span>
         세 가지 모두.
       </h2>
     </div>

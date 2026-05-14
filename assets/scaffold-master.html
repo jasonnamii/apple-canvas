@@ -24,13 +24,14 @@
   --imac-orange: #FF7A1A;
   --imac-yellow: #FFCB05;
   --imac-green: #4DD964;
-  --hl-pink:   #ff5e8a;
-  --hl-yellow: #ffd93d;
-  --hl-mint:   #4ecdc4;
-  --hl-coral:  #ff8a5b;
-  --hl-lilac:  #b980f0;
+  --hl-yellow: #F0F921;
+  --hl-green:  #C6F432;
+  --hl-c8:     #07ED21;
+  --hl-pink:   #FF7AB6;
+  --hl-blue:   #6FB0FF;
+  --hl-ink:    #0A0A0C;
   --ai-gradient: linear-gradient(90deg, #fd9700 0%, #f40 28%, #ff2469 49%, #c65cff 78%, #0092ff 100%);
-  --hl-strip: linear-gradient(180deg, transparent 55%, currentcolor 55%);
+  /* --hl-strip 폐기 — .hl rounded-pill로 단일화 */
   --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-fast: 0.3s;
   --dur-mid: 0.4s;
@@ -136,19 +137,25 @@ section { padding-block: clamp(80px, 12vh, 160px); }
   color: transparent;
 }
 
-/* 형광펜 5색 strip */
-.highlight-wrapper {
-  display: inline;
-  -webkit-box-decoration-break: clone;
+/* 형광펜 5색 — .hl rounded-pill (단일 정본) */
+.hl {
+  --hl-color: var(--hl-yellow);
+  background-color: var(--hl-color);
+  color: var(--hl-ink);
+  -webkit-text-fill-color: var(--hl-ink);
+  padding: 0 6px;
+  border-radius: 999px;
   box-decoration-break: clone;
-  padding: 0 0.1em;
-  background-image: linear-gradient(180deg, transparent 55%, currentcolor 55%);
+  -webkit-box-decoration-break: clone;
+  font-weight: inherit;
 }
-.highlight-pink   { color: var(--hl-pink); }
-.highlight-yellow { color: var(--hl-yellow); }
-.highlight-mint   { color: var(--hl-mint); }
-.highlight-coral  { color: var(--hl-coral); }
-.highlight-lilac  { color: var(--hl-lilac); }
+.hl-yellow { --hl-color: var(--hl-yellow); }
+.hl-green  { --hl-color: var(--hl-green); }
+.hl-c8     { --hl-color: var(--hl-c8); }
+.hl-pink   { --hl-color: var(--hl-pink); }
+.hl-blue   { --hl-color: var(--hl-blue); }
+.hl-tight  { padding: 0 4px; border-radius: 999px; }
+.hl-block  { padding: 0 8px; border-radius: 999px; }
 
 /* Big-Number */
 .big-number {
