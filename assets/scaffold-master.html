@@ -40,6 +40,45 @@
 :root[data-theme="light"], :root[data-theme="dark"] {
   --c8: #07ED21; --c8-soft: #4DFF5E; --c8-deep: #06B81A; --c8-ink: #04140A;
 }
+/* ① TONE — VIBRANT PALETTE 25 (uploads/6768f29a 박제)
+   액센트·culture 보조용. signal은 페이지당 1개 — 헌법 유지.
+   기존 --accent-*·--hl-*·--c8 우선. --v-*는 추가 액센트 슬롯. */
+:root[data-theme="light"], :root[data-theme="dark"] {
+  --v-electric-blue: #00ffff;
+  --v-hot-pink:      #ff69b4;
+  --v-lime:          #32cd32;
+  --v-magenta:       #ff00ff;
+  --v-neon-orange:   #ff6700;
+  --v-purple:        #9400d3;
+  --v-coral:         #ff7f50;
+  --v-cyan:          #00ffff;
+  --v-gold:          #ffd700;
+  --v-crimson:       #dc143c;
+  --v-turquoise:     #40e0d0;
+  --v-violet:        #8a2be2;
+  --v-azure:         #007fff;
+  --v-scarlet:       #ff2400;
+  --v-emerald:       #50c878;
+  --v-ruby:          #e0115f;
+  --v-sapphire:      #0f52ba;
+  --v-amber:         #ffbf00;
+  --v-indigo:        #4b0082;
+  --v-jade:          #00a86b;
+  --v-aqua:          #00ffff;
+  --v-cobalt:        #0047ab;
+  --v-fuchsia:       #ff00ff;
+  --v-chartreuse:    #7fff00;
+  --v-teal:          #008080;
+  /* gradient — vibrant 6스톱 (culture용·1회 한정) */
+  --v-gradient: linear-gradient(95deg,
+    var(--v-electric-blue) 0%,
+    var(--v-azure) 20%,
+    var(--v-violet) 40%,
+    var(--v-magenta) 60%,
+    var(--v-scarlet) 80%,
+    var(--v-neon-orange) 100%);
+}
+
 :root[data-theme="light"] {
   --bg: #FFFFFF; --bg-alt: #F5F5F7;
   --text: #1D1D1F; --headline: #000000;

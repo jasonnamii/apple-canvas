@@ -42,6 +42,27 @@ license: Proprietary. Personal use.
 
 > apple.com 박제. **이미지 없는 문서를 애플급 강도로 발현시키는 캔버스.**
 
+
+## Skill Boundaries
+
+- **하는 것** — Apple Canvas.
+- **안 하는 것** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
+
+## When to Use
+
+- 사용자가 "애플처럼만들어줘", "디자인해줘", "시각화해줘", "랜딩만들어줘", "build apple page" 같은 표현으로 발동
+- 도메인 작업이 필요한 시점
+- **안 쓸 때** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
+
+
+## Prerequisites
+
+| # | 체크 | 미충족 시 |
+|---|------|-----------|
+| 1 | 대상·입력 명확 (스킬 발동 의도 확인) | 1줄 확인 후 진입 |
+| 2 | references/ 폴더 접근 가능 | inline fallback |
+
+
 ## 본질
 
 → **3가지가 본질** — 듀얼톤·빅타이포·한 페이지 한 메시지.
@@ -123,7 +144,7 @@ license: Proprietary. Personal use.
 
 | 축 | 파일 |
 |---|---|
-| A1 컬러 | `→ references/axis-1-color.md` — iMac 7색·gradient-text 5스톱·형광펜 5색 + **C8 `#07ED21`** |
+| A1 컬러 | `→ references/axis-1-color.md` — iMac 7색·gradient-text 5스톱·형광펜 5색 + **C8 `#07ED21`** + **Vibrant 25 (`--v-*`)** |
 | A2 타이포 | `→ references/axis-2-typography.md` + `→ references/korean-typography.md` |
 | A3 레이아웃 | `→ references/axis-3-layout.md` + `→ references/responsive.md` |
 | A4 라인 | `→ references/axis-4-line.md` + `→ references/diagram-geometry.md` |
@@ -184,7 +205,46 @@ bash references/qc-checklist.md
 
 ---
 
-## Gotchas
+## Output Path
+
+| 산출물 | 경로 |
+|---|---|
+| 주 산출물 | `mnt/outputs/apple-canvas_{topic}_{YYYY-MM-DD}.md` |
+| 형식 | .html, .md. |
+| 리서치 결과 (해당 시) | `{VAULT}/_skills research/apple-canvas/{YYYY-MM-DD}_{topic}.md` |
+
+## Reference Index
+
+| 파일 | 내용 | 언제 |
+|---|---|---|
+| `references/accessibility-aria-reduced-motion.md` | accessibility aria reduced motion | 해당 단계 진입 시 |
+| `references/apple-easing.md` | apple easing | 해당 단계 진입 시 |
+| `references/axis-1-color.md` | axis 1 color | 해당 단계 진입 시 |
+| `references/axis-2-typography.md` | axis 2 typography | 해당 단계 진입 시 |
+| `references/axis-3-layout.md` | axis 3 layout | 해당 단계 진입 시 |
+| `references/axis-4-line.md` | axis 4 line | 해당 단계 진입 시 |
+| `references/axis-5-motion.md` | axis 5 motion | 해당 단계 진입 시 |
+| `references/axis-6-emphasis.md` | axis 6 emphasis | 해당 단계 진입 시 |
+| `references/axis-7-dataviz.md` | axis 7 dataviz | 해당 단계 진입 시 |
+| `references/axis-8-interaction.md` | axis 8 interaction | 해당 단계 진입 시 |
+| `references/color-spectrum.md` | color spectrum | 해당 단계 진입 시 |
+| `references/constitution.md` | constitution | 해당 단계 진입 시 |
+| `references/data-big-number.md` | data big number | 해당 단계 진입 시 |
+| `references/data-footnote-system.md` | data footnote system | 해당 단계 진입 시 |
+| `references/diagram-geometry.md` | diagram geometry | 해당 단계 진입 시 |
+
+
+## Next Phase
+
+본 스킬 작업 후 자연스럽게 이어지는 흐름:
+
+- 후속 작업 → `ui-action-designer`
+- 후속 작업 → `html-div-style`
+- 후속 작업 → `obsidian-markdown`
+- 후속 작업 → `bp-guide`
+- 후속 작업 → `copywriting-skill`
+
+## Failure Modes (Gotchas)
 
 | 함정 | 대응 |
 |---|---|
@@ -238,7 +298,7 @@ bash references/qc-checklist.md
 | text | `--text`·`--text-secondary`·`--text-tertiary`·`--headline` |
 | authority | `--text`·`--headline` (검정 본문) |
 | signal | `--accent-blue`·`--accent-pink`·`--c8` (한 페이지 1개만) |
-| culture | iMac 7색·형광펜 5색 |
+| culture | iMac 7색·형광펜 5색·**Vibrant 25 (`--v-*` / `--v-gradient` 1회) |
 | depth | `--shadow-card`·`--bg-alt`·`--imac-silver` |
 
 → "예쁜 색"이 아니라 *역할*로 선택. signal은 페이지당 1개. culture는 브랜드 정체성·signal과 분리.
