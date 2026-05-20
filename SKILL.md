@@ -244,6 +244,54 @@ bash references/qc-checklist.md
 - 후속 작업 → `bp-guide`
 - 후속 작업 → `copywriting-skill`
 
+
+## §LINEBREAK — 한국어 문법인지 줄바꿈 (정본)
+
+**원칙** — 줄바꿈은 "다음 줄"이 아니라 "다음 문절"이다. 어절·동사구·조사구 중간에서 끊지 않는다. 단순 다음줄 넘기기 ✗ — 문법 인지 후 의미 단위 경계에서만 끊는다.
+
+### 룰 5
+
+| # | 룰 | 검증 |
+|---|---|---|
+| 1 | **CSS 강제** — 모든 한국어 텍스트 컨테이너에 `word-break: keep-all; line-break: strict; overflow-wrap: break-word;` 박제. `word-break: break-all` ✗·`break-word` 단독 ✗ | CSS grep |
+| 2 | **의미 단위 보존** — 조사(이/가·은/는·을/를·에서·으로)는 앞 어절에 붙는다. 서술어(입니다·합니다·됩니다) 중간 분할 ✗ | 렌더 후 줄 시작 grep |
+| 3 | **강제 비분할** — 고유명사·숫자+단위(`12px`·`3개월`)·복합명사(인공지능·사업계획서)는 `<span class="nb">...</span>` (white-space: nowrap) 또는 `&nbsp;`로 묶음 | DOM grep |
+| 4 | **수동 `<br>` = 의미 단위에서만** — 문절 경계 강제. 어절 중간·조사 앞 `<br>` 절대 ✗ | `<br>` 전후 형태소 확인 |
+| 5 | **산출물 자가검증** — 렌더 후 ① 단독 조사·어미가 줄 시작 ② 1글자 고립 ③ 숫자·단위 분리 — 1건 적발 시 nb-span·br 재조정 | 3축 grep PASS |
+
+### 검증 셀렉터 (CSS 강제 범위)
+
+```css
+.hero h1, .section-title, .lead, .body p, .caption, blockquote,
+.bento .card, .toc, .quote-pull, .num-big, .kpi-label,
+h1, h2, h3, h4, .title, .subtitle, .pull-quote {
+  word-break: keep-all;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+.nb { white-space: nowrap; }
+```
+
+### ❌ WRONG vs ✅ CORRECT
+
+```html
+❌ <h1>메타인지가<br>분기점이다</h1>           <!-- 조사 "가" 뒤 강제 분할 -->
+✅ <h1>메타인지가 <span class="nb">분기점이다</span></h1>
+
+❌ word-break: break-all;                      <!-- 어절 중간 잘림 -->
+✅ word-break: keep-all; overflow-wrap: break-word;
+
+❌ <p>우리는 사업<br>계획서를 작성한다</p>     <!-- 복합명사 분할 -->
+✅ <p>우리는 <span class="nb">사업계획서를</span> 작성한다</p>
+
+❌ <h2>3<br>개월 만에</h2>                     <!-- 숫자+단위 분리 -->
+✅ <h2><span class="nb">3개월</span> 만에</h2>
+```
+
+**적용 책임** — 본 스킬이 산출하는 모든 한국어 텍스트 블록은 §LINEBREAK 룰 5 PASS 후 출고. 후보정 최소화가 목표.
+
+---
+
 ## Failure Modes (Gotchas)
 
 | 함정 | 대응 |
