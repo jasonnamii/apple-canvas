@@ -180,3 +180,28 @@ prose-preservation.md가 두 영토 분리 정본.
 - assets/primitives.html 신설 (124줄·Hero/Big-Number/HL/Bento/Ive/Ferrari 6 component)
 - evals/ 폴더 신설 (스텁 README — 5 표준 입력 계획)
 - Reference Index 카테고리 압축 (42행 → 카테고리 9행)
+
+## v260523.4 — references 42→28 진짜 통합 (4역할 루프)
+
+### 작업자/연결자/감시자/검토자 N회 루프 결과
+- 8 통합본 신설 (17 파일 흡수):
+  - `tone.md` (tone-light+dark+dual-rules+color-spectrum, 206줄)
+  - `mode-html.md` (mode-html-bento+mix+scroll, 152줄)
+  - `layout.md` (layout-bento-fullsection+compare-matrix+grid-12col, 183줄)
+  - `motion.md` (motion-scroll-trigger+sticky-pin, 218줄)
+  - `interaction.md` (interaction-color-swatch+drawer-modal+marquee-hover+tile-boc, 296줄)
+  - `data.md` (data-big-number+footnote-system, 129줄)
+  - `system.md` (system-data-attributes+namespace-bem, 156줄)
+  - `typography.md` (korean-typography+typography-16-scale, 215줄)
+- 17 원본 파일 삭제 · 본문 verbatim 100% 보존 · 헤더만 재정렬
+- SKILL.md @uses 블록 자동 dedup·정렬 · Reference Index v260523.4로 재작성
+- 모든 본문 포인터 치환 (`→ tone-light.md` → `→ references/typography.md §1` 등)
+- 잔존 grep: CSS 클래스명 `.tone-dark` 4건만 잔존 (파일참조 아님·정상)
+
+### 검증
+- validate.py: valid=true, errors=[]
+- dry_run.py: PASS (427줄, desc 909/1024)
+- 9룰 7섹션: NONE missing
+- 원본 키워드 verbatim 회수: 100% (hex·BEM·data-mode·StickyPin·big-number 모두 grep PASS)
+
+총 references: 42 → 28 (-33%)

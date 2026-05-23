@@ -8,6 +8,16 @@ description: |
   P5: .html, .md.
   NOT: 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체(→shaper-skill).
 "@uses":
+  - assets/scaffold-bento.html
+  - assets/scaffold-master.html
+  - assets/scaffold-scroll.html
+  - assets/tokens.css
+  - modes/mode-bento.md
+  - modes/mode-cinematic.md
+  - modes/mode-mix.md
+  - modes/mode-pt-monolith.md
+  - modes/mode-scroll.md
+  - references/apple-easing.md
   - references/axis-1-color.md
   - references/axis-2-typography.md
   - references/axis-3-layout.md
@@ -17,25 +27,15 @@ description: |
   - references/axis-7-dataviz.md
   - references/axis-8-interaction.md
   - references/constitution.md
-  - references/forbidden.md
-  - references/qc-checklist.md
-  - references/apple-easing.md
-  - references/korean-typography.md
-  - references/responsive.md
   - references/diagram-geometry.md
-  - references/prose-preservation.md
-  - references/motion-catalog.md
-  - references/visual-effects-catalog.md
+  - references/forbidden.md
   - references/layout-catalog.md
-  - modes/mode-bento.md
-  - modes/mode-scroll.md
-  - modes/mode-mix.md
-  - modes/mode-cinematic.md
-  - modes/mode-pt-monolith.md
-  - assets/scaffold-master.html
-  - assets/scaffold-bento.html
-  - assets/scaffold-scroll.html
-  - assets/tokens.css
+  - references/motion-catalog.md
+  - references/prose-preservation.md
+  - references/qc-checklist.md
+  - references/responsive.md
+  - references/typography.md
+  - references/visual-effects-catalog.md
   - scripts/qc.sh
 license: Proprietary. Personal use.
 ---
@@ -200,7 +200,7 @@ license: Proprietary. Personal use.
 | 축 | 파일 |
 |---|---|
 | A1 컬러 | `→ references/axis-1-color.md` — iMac 7색·gradient-text 5스톱·형광펜 5색 + **C8 `#07ED21`** + **Vibrant 25 (`--v-*`)** |
-| A2 타이포 | `→ references/axis-2-typography.md` + `→ references/korean-typography.md` |
+| A2 타이포 | `→ references/axis-2-typography.md` + `→ references/typography.md` |
 | A3 레이아웃 | `→ references/axis-3-layout.md` + `→ references/responsive.md` |
 | A4 라인 | `→ references/axis-4-line.md` + `→ references/diagram-geometry.md` |
 | A5 모션 | `→ references/axis-5-motion.md` — Apple-easing `cubic-bezier(0.4, 0, 0.2, 1)` |
@@ -270,21 +270,20 @@ bash scripts/qc.sh <HTML_FILE>
 | 형식 | .html, .md. |
 | 리서치 결과 (해당 시) | `{VAULT}/_skills research/apple-canvas/{YYYY-MM-DD}_{topic}.md` |
 
-## Reference Index (v260523.3 — 카테고리 압축)
+## Reference Index (v260523.4 — 42→28 통합)
 
 | 카테고리 | 파일 | 언제 |
 |---|---|---|
-| **헌법·금지·QC** | constitution.md · forbidden.md · qc-checklist.md · gotchas.md | 발동 진입·산출 직전·QC |
-| **토큰 SSOT** | `assets/tokens.css` · `scripts/qc.sh` · color-spectrum.md · axis-1-color.md | 모든 산출에 link/script 1순위 |
+| **헌법·금지·QC** | constitution.md · forbidden.md · qc-checklist.md · gotchas.md | 발동 진입·산출 직전 |
+| **토큰 SSOT** | `assets/tokens.css` · `scripts/qc.sh` | 모든 산출에 link/script 1순위 |
 | **8 AXIS** | axis-1-color · axis-2-typography · axis-3-layout · axis-4-line · axis-5-motion · axis-6-emphasis · axis-7-dataviz · axis-8-interaction | 축별 상세 결정 |
 | **5 LAYOUT mode** | modes/mode-bento · mode-scroll · mode-mix · mode-cinematic · mode-pt-monolith | INTENT 선택 후 |
-| **3 HTML mode** | mode-html-bento · mode-html-mix · mode-html-scroll | HTML 모드 강도 |
-| **3 TONE** | tone-light · tone-dark · tone-dual-rules | TONE 결정 |
+| **통합 도메인 8** | tone (Light+Dark+Dual+Spectrum) · mode-html (Bento+Mix+Scroll) · layout (Bento-FS+Compare+Grid12) · motion (ScrollTrig+StickyPin) · interaction (Swatch+Drawer+Marquee+TileBOC) · data (BigNum+Footnote) · system (data-attr+BEM) · typography (Korean+16Scale) | 도메인별 상세 |
 | **카탈로그 3** | layout-catalog · motion-catalog · visual-effects-catalog | 어휘 사전 (정답 ✗) |
-| **세부 가이드** | korean-typography · responsive · apple-easing · diagram-geometry · prose-preservation · data-big-number · data-footnote-system · accessibility-aria-reduced-motion · layout-bento-fullsection · layout-compare-matrix · layout-grid-12col · interaction-* (4) · motion-scroll-trigger · motion-sticky-pin · system-data-attributes · system-namespace-bem · typography-16-scale | 해당 단계 진입 시 |
+| **세부 가이드** | apple-easing · diagram-geometry · prose-preservation · responsive · accessibility-aria-reduced-motion | 해당 단계 진입 시 |
 | **자산** | `assets/scaffold-master.html` · `scaffold-bento.html` · `scaffold-scroll.html` · `primitives.html` · `deck-stage.js` · `tokens.css` | 부팅·복사 |
 
-총 references 42 · modes 5 · assets 6 · scripts 1.
+총 references **28** · modes 5 · assets 6 · scripts 1.
 
 ## Next Phase
 
@@ -356,7 +355,7 @@ h1, h2, h3, h4, .title, .subtitle, .pull-quote {
 | inline-media 1프레임만 | start/end/fallback 3프레임 |
 | MS워드 룩 (회색 테이블·강약 ✗) | LV3 풀강 디폴트 |
 | `transition` easing 임의값 | Apple-easing `cubic-bezier(0.4, 0, 0.2, 1)` |
-| 한국어 Hero 어절 줄바꿈 깨짐 | `word-break: keep-all` + nb-span. `→ korean-typography.md` |
+| 한국어 Hero 어절 줄바꿈 깨짐 | `word-break: keep-all` + nb-span. `→ references/typography.md §1` |
 | wrap·prose 좌측 정렬선 어긋남 | max-width 동기. `.prose > *` 자식만 760 |
 | 단일 미디어 쿼리 1단 반응형 | H6 위반. D1~D4 4단. `→ responsive.md` |
 | inline `grid-template-columns:repeat(N,1fr)` 모바일 미분해 | 속성 선택자 + `!important` 분해 |

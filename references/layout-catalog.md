@@ -264,15 +264,15 @@ Collage → Social Proof → Landing Funnel CTA
 | 카탈로그 archetype | 상세 박제 |
 |---|---|
 | Bento Grid·Modular Grid | `→ references/axis-3-layout.md` (12-grid·offset·매거진 비대칭) |
-| Bento Grid (풀섹션) | `→ references/layout-bento-fullsection.md` |
-| Option Matrix·Comparison Cards | `→ references/layout-compare-matrix.md` |
-| 12-grid 구조 | `→ references/layout-grid-12col.md` |
-| Bento Grid 빌드 | `→ references/mode-html-bento.md` |
-| Mix 빌드 (Bento + Scroll) | `→ references/mode-html-mix.md` |
-| Scrollytelling·Sticky Narrative 빌드 | `→ references/mode-html-scroll.md` |
+| Bento Grid (풀섹션) | `→ references/layout.md` |
+| Option Matrix·Comparison Cards | `→ references/layout.md` |
+| 12-grid 구조 | `→ references/layout.md` |
+| Bento Grid 빌드 | `→ references/mode-html.md` |
+| Mix 빌드 (Bento + Scroll) | `→ references/mode-html.md` |
+| Scrollytelling·Sticky Narrative 빌드 | `→ references/mode-html.md` |
 | 반응형 D1-D4 | `→ references/responsive.md` |
 | SVG 다이어그램·Flowchart | `→ references/diagram-geometry.md` |
-| Big Number·KPI Grid | `→ references/data-big-number.md` |
+| Big Number·KPI Grid | `→ references/data.md` |
 
 → 카탈로그로 archetype 결정 → 상세 박제로 *빌드 점프*.
 
