@@ -155,3 +155,15 @@ prose-preservation.md가 두 영토 분리 정본.
 ## v1.0 (2026-05-02)
 
 27페이지 5계층 42패턴. 차분 컬러·형광펜 ✗ 한계.
+
+## v260523 — MAXIMAL/MINIMAL VOLUME 시스템 신설
+- 디폴트=MAXIMAL(기존 헌법 보존), MINIMAL 명시호출 신설
+- Ive(Light MINIMAL)·Ferrari(Dark MINIMAL, serif/italic 금지) alias 추가
+- 비비드 채도 신성불가침 헌법 — S≥90%·L 40~60%·파스텔/머디/뮤트 모두 금지
+- v_KISAS_REMOVED: KISAS 흔적 전수 삭제 (SKILL.md·layout-catalog·visual-effects-catalog)
+
+## v260523.2 — 형광펜 105% 룰 박제
+- axis-6-emphasis v2.0 → v2.1: 알약 높이 = font-size × 1.05 정확
+- .hl CSS — line-height: 1.05 + padding-block: 0 + display: inline 강제
+- SVG underline — height: 1.05em 추가 (형광펜과 동일 비율)
+- SKILL.md Failure Modes — 105% 위반 함정 등재

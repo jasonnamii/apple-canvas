@@ -2,11 +2,37 @@
 
 > 형광펜 5색 (`.hl` rounded-pill 캡슐) + SVG 손글씨 underline 5색 + gradient-text + 5스톱 그라디언트 마스터.
 
+## 0. 105% 룰 (정본·위반 = FAIL)
+
+| 항목 | 값 | 비고 |
+|---|---|---|
+| 알약 높이 | font-size × **1.05** 정확 | line-height: 1.05 강제 |
+| 세로 padding | **0** | padding-block: 0 |
+| 가로 padding | `.hl`=6px / `.hl-tight`=4px / `.hl-block`=8px | px 고정·em ✗ |
+| display | `inline` 강제 | inline-block ✗ (줄바꿈 분리됨) |
+| box-decoration-break | `clone` 필수 | 멀티라인 양 끝 둥글게 |
+| SVG underline 높이 | `height: 1.05em` | 형광펜과 동일 비율 |
+| 검증 | DevTools에서 알약 박스 = 글자 박스 × 1.05 | 위반 시 FAIL |
+
+**❌ WRONG**
+```css
+.hl { padding: 0.2em 0.6em; line-height: 1.5; }      /* em 폭발·line-height 늘어남 */
+.hl { padding: 4px 6px; display: inline-block; }     /* 세로 padding·줄바꿈 깨짐 */
+```
+
+**✅ CORRECT**
+```css
+.hl { padding: 0 6px; padding-block: 0; line-height: 1.05; display: inline;
+      box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+```
+
 ## 1. 형광펜 5색 (`.hl` rounded-pill — 단일 정본)
 
 **strip 방식(글자 절반만 fill) 폐기.** 풀 fill + padding + border-radius로 단어 전체를 둥근 사각형 캡슐로 감싼다. **본문·헤드라인·히어로 전 위계에서 사용 ○.**
 
-**v2.0 — px 고정 사양 (em 비율 폐기).** 가로 절대값 캡(`.hl`=6px / `.hl-block`=8px / `.hl-tight`=4px), 세로 0. em 기반은 큰 글자(40px+)에서 절대값 폭발 → 줄바꿈·줄간격 깨짐. px 고정이 모든 위계에서 "글자보다 아주 약간만 큰" 알약을 보장.
+**v2.1 — 105% 룰 (위반 = FAIL).** 형광펜 알약 높이 = **문자 크기의 105% 정확**. 가로는 px 고정 캡(`.hl`=6px / `.hl-block`=8px / `.hl-tight`=4px)·세로 padding 0. 알약 높이는 `line-height: 1.05`로 강제. font-size가 14px이든 200px이든 알약은 글자 위아래로 각각 2.5%만 비집고 나옴. em·% 기반 padding은 큰 글자에서 폭발하므로 사용 ✗.
+
+**왜 105%인가** — 100%면 글자 디센더(j·g·y·p)와 어센더(b·d·h·k·l)가 알약 밖으로 비집고 나옴. 110%+면 형광펜이 텍스트보다 도드라져 위계 역전. 105%가 "글자가 아슬아슬하게 알약 안에 들어오면서 형광펜은 보조 강조 역할"을 유지하는 임계값.
 
 ```css
 :root {
@@ -31,6 +57,10 @@
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   font-weight: inherit;
+  /* === v2.1 105% 룰 (위반 = FAIL) === */
+  line-height: 1.05;          /* 알약 높이 = 문자크기의 105% */
+  padding-block: 0;           /* 세로 패딩 0 — 105% 보장 */
+  display: inline;            /* inline-block ✗ — 줄바꿈 시 알약 분리 */
   /* 다크모드에서도 fill 동일 — 투명·opacity 처리 ✗ */
 }
 .hl-yellow { --hl-color: var(--hl-yellow); }
@@ -93,9 +123,10 @@
 ```
 
 ```css
-.underline { position: relative; }
+.underline { position: relative; line-height: 1.05; }
 .underline svg {
   position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1.05em;             /* === v2.1 105% 룰 — 형광펜과 동일 비율 === */
   mix-blend-mode: multiply;   /* 라이트 */
   /* mix-blend-mode: lighten; */  /* 다크 */
 }

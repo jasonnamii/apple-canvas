@@ -180,7 +180,7 @@
 
 ### D. Korean Premium Magazine식 문서
 → Oversized Crop + Paper Texture + Type Wrapping Object + Vertical Side Label + Metadata Caption + Split Frame
-→ **For**: KISAS·문화 리포트·교육 철학·공공 내러티브
+→ **For**: 문화 리포트·교육 철학·공공 내러티브·헤리티지 브랜드
 → **Avoid**: 복잡 대시보드·제품 UI
 
 ### E. Research Dossier식 고급 리포트

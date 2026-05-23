@@ -190,21 +190,14 @@ Risk-Reward Map → Decision Box
 ```
 **Avoid**: 시네마틱 parallax·포스터 타이포·과디자인 카드
 
-### C. KISAS식 교육 철학
-```
-Manifesto Hero → Magazine Spread → Annotated Document →
-Step Flow → Timeline → Research Dossier → Decision/Definition Box
-```
-**Avoid**: generic SaaS bento·dark futuristic AI 스타일
-
-### D. Cre8orClub 갤러리
+### C. Cre8orClub 갤러리
 ```
 Spotlight Stage → Curtain Reveal → Museum Wall →
 Progressive Disclosure → Contact Sheet → Object Catalog
 ```
 **Avoid**: infinite feed·generic thumbnail grid·commerce 카드
 
-### E. 문화/캠페인 랜딩
+### D. 문화/캠페인 랜딩
 ```
 Full-bleed Hero → Poster Layout → Storyboard →
 Collage → Social Proof → Landing Funnel CTA

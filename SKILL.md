@@ -1,12 +1,12 @@
 ---
 name: apple-canvas
 description: |
-  Apple Canvas. apple.com 박제 → 의사결정 트리·헌법 7개·5모드. 비비드 풀채도(S≥85%)·형광펜 5색·gradient-text 5스톱·PT빅타이포·Frame Sandwich. 한국어 4단계 타이포·반응형 4단·SVG 다이어그램 기하·본문 verbatim 보존, 시각효과카탈로그, 레이아웃카탈로그. 이미지 없이 애플급 강도 발현. C8 (#07ED21) 신호색 지원.
-  P1: 애플캔버스, apple canvas, 애플웹, 애플랜딩, KPI한장, 대시보드, 벤또, 1pager, 듀얼톤, Bento, 빅넘버, 16단계타이포, 형광펜, gradient-text, 5스톱, PT모놀리스, 빅타이포, 비비드, 한장PT, 한국어타이포, 반응형, 다이어그램, 본문보존, C8, 모션카탈로그, motion catalog, scroll scrub, sticky hero, mask reveal, reduced-motion, 접근성.
-  P2: 애플처럼만들어줘, 디자인해줘, 시각화해줘, 랜딩만들어줘, build apple page, design like apple, 한국어로, 모바일 반응형, 본문 보존 시각화.
-  P3: apple-style landing, gradient-text, frame sandwich, PT monolith, bento grid, korean typography, prose preservation.
+  Apple Canvas. apple.com 박제·5LAYOUT×2VOLUME. 디폴트=MAXIMAL(형광펜·gradient·PT빅·풀필). 명시호출=MINIMAL(액센트1·≤5%·hairline·풀필✗). Ive=Light MINIMAL, Ferrari=Dark MINIMAL(serif/italic✗). 비비드 채도 신성불가침 S≥90%·파스텔/머디/뮤트✗. 한국어4단·반응형4단·SVG기하·verbatim 보존. C8 신호색.
+  P1: 애플캔버스, apple canvas, 애플랜딩, KPI한장, 1pager, 듀얼톤, Bento, 빅넘버, 형광펜, gradient-text, PT모놀리스, 빅타이포, 비비드, 한국어타이포, 반응형, 다이어그램, 본문보존, C8, motion catalog, scroll scrub, sticky hero, reduced-motion, MAXIMAL, MINIMAL, 맥시멀, 미니멀, Ive, Ferrari, 아이브, 페라리, 아이브모드, 페라리모드, hairline, 감산헌법, 채도불가침.
+  P2: 애플처럼만들어줘, 디자인해줘, 시각화해줘, 랜딩만들어줘, build apple page, 한국어로, 모바일 반응형, 미니멀로, 맥시멀로, 아이브로, 페라리로, 아이브모드로, 페라리모드로.
+  P3: apple-style landing, MAXIMAL volume, MINIMAL volume, Ive mode, Ferrari mode, vivid saturation inviolable.
   P5: .html, .md.
-  NOT: 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
+  NOT: 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체(→shaper-skill).
 "@uses":
   - references/axis-1-color.md
   - references/axis-2-typography.md
@@ -45,13 +45,15 @@ license: Proprietary. Personal use.
 
 ## Skill Boundaries
 
-- **하는 것** — Apple Canvas.
+- **하는 것** — apple.com 박제 기반 1page~scroll HTML/MD 산출. MAXIMAL(풀강) 디폴트 + MINIMAL(아이브·페라리 alias) 명시호출 분기. 비비드 채도 신성불가침.
 - **안 하는 것** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
 
 ## When to Use
 
-- 사용자가 "애플처럼만들어줘", "디자인해줘", "시각화해줘", "랜딩만들어줘", "build apple page" 같은 표현으로 발동
-- 도메인 작업이 필요한 시점
+- "애플처럼만들어줘·디자인해줘·시각화해줘·랜딩만들어줘·build apple page" — MAXIMAL 디폴트 발동
+- "미니멀로·아이브로·아이브모드로·페라리로·페라리모드로" — MINIMAL 발동 (alias로 Tone 자동 매핑)
+- "맥시멀로·비비드로·형광펜으로" — MAXIMAL 명시 강제
+- 1page KPI·BP·매니페스토·런칭 랜딩·시네마틱 서사 등 *이미지 없이 강도 발현*이 필요한 시점
 - **안 쓸 때** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
 
 
@@ -67,6 +69,26 @@ license: Proprietary. Personal use.
 
 → **3가지가 본질** — 듀얼톤·빅타이포·한 페이지 한 메시지.
 → 나머지는 사례·변주. 룰이 아니라 *표현*.
+
+---
+
+## ⓥ VOLUME — 0계층 결정 (디폴트 = MAXIMAL)
+
+| 볼륨 | 본질 | 호출 트리거 | Tone 매핑 |
+|---|---|---|---|
+| **MAXIMAL ★ (디폴트)** | 비비드 풀팔레트·형광펜·gradient-text·풀필블록·PT빅 — 한 페이지에 *모든 표현 강도 동시 발현* | 호출만 / "맥시멀로" / "비비드로" / "형광펜으로" | Light·Dark·Dual 자유 |
+| **MINIMAL** | 액센트 1색·면적 ≤5%·hairline 1px·풀필블록 0·그라디언트 0·웨이트 2개 — *침묵 50%로 강도 뽑기* | "미니멀로" / "아이브로(=Light)" / "페라리로(=Dark)" 명시호출만 | Ive=Light / Ferrari=Dark |
+
+**alias 규칙 (자동 매핑):**
+- "아이브로/아이브모드로/Ive" → MINIMAL + Light + 산세리프 + 액센트 1 (default `#FF2D7E`)
+- "페라리로/페라리모드로/Ferrari" → MINIMAL + Dark + **산세리프(serif·italic ✗)** + 액센트 1 (default Ferrari Red `#FF2800`)
+- "미니멀로" → MINIMAL + Tone 미지정시 Light
+
+**비비드 채도 신성불가침 (양 볼륨 공통, 위반 = FAIL):**
+- 색의 *개수·면적*은 볼륨별 다름. **색의 채도는 모드 무관 항상 S≥90%·L 40~60%**
+- ⛔ 금지: 파스텔(흰 섞음)·머디(검정 섞음)·뮤트(회색 섞음)·틴트·셰이드·세미투명 fill
+- MINIMAL의 1색도 *쨍한 풀채도* (`#FF2800` ✓, `#C9655E` ✗)
+- `opacity` 액센트 색 적용 ✗·`color-mix(in srgb, X, white)` ✗
 
 ---
 
@@ -115,6 +137,37 @@ license: Proprietary. Personal use.
 | LV2 강조 | 2색 | 1~2색 | 빅넘버 가능 | 옵션 |
 | **LV3 풀강 ★** | **풀팔레트** | **5색 마스터** | **PT빅 200px+** | **5스톱 1회** |
 
+→ LV1~LV3은 **MAXIMAL 볼륨 안의 강도 조절**. MINIMAL은 LV 시스템과 *직교* — 아래 별도 표.
+
+### MINIMAL 볼륨 — 감산 헌법 (위반 = FAIL)
+
+| 항목 | MINIMAL 룰 | MAXIMAL 대비 |
+|---|---|---|
+| 액센트 색 | 1색만 (S≥90%·L 40~60%) | LV3=풀팔레트 |
+| 액센트 면적 | 페이지 전체 픽셀 대비 ≤5% | LV3=풀필블록·gradient 자유 |
+| 풀필 색 블록 | 0개 (액센트는 텍스트·라인·점·작은 칩에만) | LV3=hero 풀필 자유 |
+| 그라디언트 | 금지 (단색만) | LV3=5스톱 1회 |
+| 형광펜 | 금지 (`text-decoration` ✗·hl-pill ✗) | LV3=5색 마스터 |
+| 디바이더 | 1px hairline만 (Light=`#E5E5E5` / Dark=`#2A2A2A`) | LV3=풀필 띠 가능 |
+| 웨이트 | 2개만 (Light 300 + Semibold 600) | LV3=16스케일 풀 |
+| 카드 라운드 | `border-radius: 0` 또는 ≤4px | LV3=≥12px 부드러움 |
+| 침묵 영역 | ≥50% (흰/검 ground만) | LV3=조밀 가능 |
+| Ferrari 추가 | **serif·italic 절대 ✗ — 산세리프(Pretendard/SUIT)만** | n/a |
+
+**MINIMAL 토큰:**
+
+```css
+/* Ive (Light MINIMAL) */
+--bg: #FAFAFA; --text: #0A0A0A; --hairline: #E5E5E5;
+--accent: #FF2D7E; /* 호출시 override 가능 — S≥90% 강제 */
+
+/* Ferrari (Dark MINIMAL) */
+--bg: #0A0A0A; --text: #FAFAFA; --hairline: #2A2A2A;
+--accent: #FF2800; /* Ferrari Red — S≥90% 강제 */
+/* font-family: 'Pretendard Variable', 'SUIT Variable', sans-serif !important; */
+/* font-style: normal !important; — italic 금지 */
+```
+
 ---
 
 ## 헌법 H1~H7 (위반 = FAIL)
@@ -132,7 +185,7 @@ license: Proprietary. Personal use.
 | # | 조항 |
 |---|---|
 | H4 | **12-grid + 컨테이너 정렬 SSOT** (wrap·prose 좌측 align baseline) |
-| H5 | **채도 S≥85% 풀채도** + 비비드 양쪽 통일 (라이트=차분 ✗) |
+| H5 | **채도 S≥90%·L 40~60% 신성불가침** — 양 볼륨 공통. 파스텔/머디/뮤트/틴트/세미투명 fill 모두 ✗. MINIMAL의 1색도 풀채도 |
 | H6 | **반응형 4단** D1≥1024 / D2 769-1024 / D3 481-768 / D4≤480 + nb-span 자동 해제 |
 | H7 | **본문 verbatim 보존** — 산문체 입력을 표·블릿으로 압축 ✗ (shaper-skill 영토) |
 
@@ -299,6 +352,7 @@ h1, h2, h3, h4, .title, .subtitle, .pull-quote {
 | 라이트=차분 / 다크=비비드 이원화 | 양쪽 동일 hex. 다크는 glow만 |
 | 5스톱 그라디언트 페이지 다회 | H3 Premium Restraint. 1회만 |
 | 형광펜에 `text-decoration` | SVG path + clipPath만 (형광펜 자체는 `.hl` rounded-pill) |
+| **형광펜 알약 높이 ≠ 105%** | v2.1 룰. `line-height: 1.05` + `padding-block: 0` + `display: inline` 강제. em 패딩·inline-block·line-height 1.3+ 모두 FAIL. 큰 글자(40px+)에서도 알약은 문자크기 × 1.05 정확. SVG underline도 `height: 1.05em`. 상세 `→ references/axis-6-emphasis.md §0` |
 | sticky 250vh 빈 공간 | 다중 state 콘텐츠 강제 |
 | inline-media 1프레임만 | start/end/fallback 3프레임 |
 | MS워드 룩 (회색 테이블·강약 ✗) | LV3 풀강 디폴트 |
@@ -323,6 +377,11 @@ h1, h2, h3, h4, .title, .subtitle, .pull-quote {
 | **모션 강약 분포** | 한 페이지 안 *모든 섹션 같은 강도 ✗*. 1개 섹션만 페이지 최대 강도 N, 2~3개 N-1, 나머지 N-2 이하, 1+ 정적 영역 의무 (Density 3+ 적용) |
 | **AI 평균값 모션 클리셰** | 모든 카드 같은 hover·모든 섹션 같은 fade up·particle·constant gradient·neon glow·cursor follow·bouncy easing·blur text reveal — 의미 없는 모션 = 제거 |
 | **reduced-motion 폴백** | 모든 HTML 산출물 `@media (prefers-reduced-motion: reduce)` 의무. parallax·scroll scrub·zoom·3D tilt 비활성화·fade로 대체. 위반 = 접근성 FAIL |
+| **MINIMAL에 형광펜·gradient·풀필블록 끌고 옴** | MAXIMAL 디폴트 무의식 유출. MINIMAL 호출 hit시 형광펜·gradient-text·hl-pill·풀필 hero 전부 OFF. 액센트는 텍스트색·라인·점·칩에만 |
+| **MINIMAL "비비드 죽임" 오해** | 색 *개수·면적*만 줄임. *채도는 그대로* S≥90%. `#FF2D7E` ✓ / `#F2A8C6`(파스텔) ✗ / `#A85577`(머디) ✗ / `opacity:0.5`로 비비드 죽이기 ✗ |
+| **페라리 = 세리프 이탤릭 오해** | 페라리 공식 디지털 자산은 Ferrari Sans(산세리프). 잡지·티셔츠 표절이 세리프 italic. Ferrari mode는 산세리프 강제 — Pretendard/SUIT Variable + `font-style: normal` |
+| **MINIMAL에 카드 라운드·그림자** | `border-radius: 12px+` ✗·`box-shadow` ✗. MINIMAL은 hairline 1px·sharp corner. 부드러움은 MAXIMAL 영토 |
+| **alias 무시하고 MAXIMAL로 출고** | "아이브로/페라리로/미니멀로" 명시 호출 hit시 MAXIMAL 헌법 전부 OFF·MINIMAL 룰로 전환. 디폴트로 흘리면 FAIL |
 
 ---
 
@@ -355,7 +414,7 @@ h1, h2, h3, h4, .title, .subtitle, .pull-quote {
 
 ## Forbidden 요약
 
-라이트 차분 시스템컬러·파스텔 워시·순흑 그라디언트·2스톱 그라디언트·5스톱 페이지 다회·sticky 빈 공간·inline-media 1프레임·`text-decoration: underline`·MS워드 룩·허여멀건/강약없는 디자인·한국어 PT에 keep-all 누락·wrap/prose 정렬선 불일치·단일 미디어 쿼리·산문체 → 표/블릿·SVG marker 노드 안 침범. 상세: `→ references/forbidden.md`
+라이트 차분 시스템컬러·파스텔 워시·머디/뮤트/틴트/세미투명 fill·순흑 그라디언트·2스톱 그라디언트·5스톱 페이지 다회·sticky 빈 공간·inline-media 1프레임·`text-decoration: underline`·MS워드 룩·허여멀건/강약없는 디자인·한국어 PT에 keep-all 누락·wrap/prose 정렬선 불일치·단일 미디어 쿼리·산문체 → 표/블릿·SVG marker 노드 안 침범·**페라리모드 serif/italic**·**MINIMAL에 형광펜/gradient/풀필블록 유출**·**비비드 채도 죽임(opacity·흰물·검정물)**. 상세: `→ references/forbidden.md`
 
 
 ## 안전성 · 접근성 (v1.1)
