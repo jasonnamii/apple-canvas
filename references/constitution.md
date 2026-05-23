@@ -26,3 +26,25 @@
 - **③ STRUCTURE** = H4·H6
 - **④ EMPHASIS** = H2·H5·H12
 - **전체 (모드 무관)** = H7
+
+
+## MINIMAL 볼륨 — 감산 헌법 (위반 = FAIL)
+
+| # | 조항 |
+|---|---|
+| M1 | 액센트 색 1개만 (S≥90%·L 40~60%) |
+| M2 | 액센트 면적 ≤5% (페이지 전체 픽셀 대비) |
+| M3 | 풀필 색 블록 0개 — 액센트는 텍스트·라인·점·작은 칩에만 |
+| M4 | 그라디언트 금지 (단색만) |
+| M5 | 형광펜 금지 (`text-decoration` ✗·hl-pill ✗) |
+| M6 | 디바이더 1px hairline만 (Light=`#E5E5E5` / Dark=`#2A2A2A`) |
+| M7 | 웨이트 2개만 (Light 300 + Semibold 600) |
+| M8 | 카드 라운드 `border-radius: 0` 또는 ≤4px |
+| M9 | 침묵 영역 ≥50% (흰/검 ground만) |
+| M10 | **Ferrari 추가** — serif·italic 절대 ✗·산세리프(Pretendard/SUIT)만 |
+
+**alias 매핑:** "아이브"=Light MINIMAL·"페라리"=Dark MINIMAL·"미니멀"=Light(디폴트)
+
+**비비드 채도 신성불가침 (H5 격상):** MINIMAL의 1색도 S≥90%·L 40~60%. `#FF2D7E` ✓ / `#F2A8C6`(파스텔) ✗ / `#A85577`(머디) ✗ / `opacity:0.5`로 비비드 죽이기 ✗.
+
+**토큰 SSOT:** `assets/tokens.css` `[data-mode="ive"]`·`[data-mode="ferrari"]` 셀렉터로 자동 적용.

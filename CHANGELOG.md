@@ -167,3 +167,16 @@ prose-preservation.md가 두 영토 분리 정본.
 - .hl CSS — line-height: 1.05 + padding-block: 0 + display: inline 강제
 - SVG underline — height: 1.05em 추가 (형광펜과 동일 비율)
 - SKILL.md Failure Modes — 105% 위반 함정 등재
+
+## v260523.3 — prism 흡수·SSOT 통합·자동화
+
+### Phase A (apple 보강)
+- assets/tokens.css 신설 (221줄·prism 396줄 구조 차용·MINIMAL 토큰 자동 분기 포함)
+- scripts/qc.sh 신설 (68줄·tokens·헌법·MINIMAL 누수·105%·Ferrari serif 자동 grep)
+- references/constitution·forbidden·qc-checklist 3파일에 MINIMAL 룰 정합 반영
+- SKILL.md @uses + QC 호출 갱신
+
+### Phase C
+- assets/primitives.html 신설 (124줄·Hero/Big-Number/HL/Bento/Ive/Ferrari 6 component)
+- evals/ 폴더 신설 (스텁 README — 5 표준 입력 계획)
+- Reference Index 카테고리 압축 (42행 → 카테고리 9행)

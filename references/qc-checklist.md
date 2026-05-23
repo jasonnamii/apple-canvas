@@ -76,3 +76,30 @@ chmod +x qc-check.sh
 
 - FAIL = 0
 - 경고는 사용 의도 있으면 OK
+
+
+## MINIMAL QC 자동 검증 (scripts/qc.sh)
+
+```bash
+bash scripts/qc.sh <HTML_FILE>
+```
+
+**MINIMAL 모드 강제 검사 (data-volume="minimal" 또는 data-mode="ive|ferrari" 감지 시):**
+
+- [ ] `class="hl"` 잔존 0건 (M5 형광펜 금지)
+- [ ] `gradient-text` 클래스 0건 (M4)
+- [ ] `box-shadow` 32px+ 0건 (M9)
+- [ ] Ferrari: `font-family: serif|Georgia|Times` 0건 (M10)
+- [ ] Ferrari: `font-style: italic` 0건 (M10)
+- [ ] 액센트 색 1개만 정의 (M1)
+- [ ] 풀필 hero/section 블록 0건 (M3)
+
+**MAXIMAL 모드 검사 (디폴트):**
+
+- [ ] H1 듀얼톤 — light/dark accent hex 동일
+- [ ] H3 5스톱 그라디언트 페이지당 ≤1회
+- [ ] H5 채도 — `rgba(...,0.X)` 액센트 0건·`color-mix(...,white)` 0건
+- [ ] H6 반응형 — `@media (max-width:` ≥1개
+- [ ] 형광펜 105% — `.hl` 정의에 `line-height: 1.05` 있음
+- [ ] reduced-motion 폴백 존재
+- [ ] 한국어 포함 시 `word-break: keep-all` 박제

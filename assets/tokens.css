@@ -1,0 +1,221 @@
+/* ============================================================
+   APPLE CANVAS — TOKENS (SSOT)
+   v260523.3 — references 4파일 산재 토큰 통합 정본.
+   prism-design/assets/tokens.css 구조 차용.
+
+   ⛔ 비비드 채도 신성불가침 — S≥90%·L 40~60%·파스텔/머디/뮤트 ✗
+   ⛔ 양 볼륨(MAXIMAL/MINIMAL) 공통 적용
+   ============================================================ */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+  /* ---------- TYPOGRAPHY (16-scale + Hero) ---------- */
+  --font-display: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-text:    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  --fs-pt:    clamp(96px, 14vw, 200px);
+  --fs-d1:    clamp(56px, 11vw, 144px);
+  --fs-d2:    clamp(44px, 7vw, 96px);
+  --fs-d3:    clamp(32px, 4.5vw, 64px);
+  --fs-h1:    clamp(28px, 3vw, 48px);
+  --fs-h2:    clamp(22px, 2.2vw, 34px);
+  --fs-h3:    18px;
+  --fs-body:  17px;
+  --fs-sm:    14px;
+  --fs-xs:    12px;
+  --fs-eyebrow: 13px;
+
+  --lh-tight: 1.02;
+  --lh-snug:  1.12;
+  --lh-body:  1.5;
+  --lh-hl:    1.05;   /* === 형광펜 105% 룰 정본 === */
+
+  --tr-tight: -0.035em;
+  --tr-snug:  -0.022em;
+  --tr-body:  -0.011em;
+
+  /* ---------- SPACING ---------- */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px; --sp-11: 192px; --sp-12: 256px;
+
+  /* ---------- CONTAINER ---------- */
+  --w-prose: 760px; --w-wrap: 1100px; --w-wide: 1280px;
+
+  /* ---------- RADIUS ---------- */
+  --r-sharp: 0; --r-1: 4px; --r-2: 8px; --r-3: 12px; --r-4: 20px; --r-pill: 999px;
+
+  /* ---------- TIMING (Apple-easing) ---------- */
+  --ease-apple: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 120ms; --dur-2: 220ms; --dur-3: 360ms; --dur-4: 600ms;
+
+  /* ============================================================
+     VIBRANT 25 — MAXIMAL 풀팔레트 (S≥90% 강제)
+     ============================================================ */
+  --imac-blue:   #3DB3FF;
+  --imac-purple: #C65CFF;
+  --imac-pink:   #FF1F6F;
+  --imac-orange: #FF7A1A;
+  --imac-yellow: #FFCB05;
+  --imac-green:  #4DD964;
+  --imac-silver: #4a4a52;
+
+  --grad-text: linear-gradient(90deg, #fd9700 0%, #f40 28%, #ff2469 49%, #c65cff 78%, #0092ff 100%);
+
+  /* 형광펜 5색 (v2.1 — 105% 룰) */
+  --hl-yellow: #F0F921;
+  --hl-green:  #C6F432;
+  --hl-c8:     #07ED21;
+  --hl-pink:   #FF7AB6;
+  --hl-blue:   #6FB0FF;
+  --hl-ink:    #0A0A0C;
+
+  /* C8 — Cre8orClub 한정 */
+  --c8:      #07ED21;
+  --c8-soft: #4DFF5E;
+  --c8-deep: #06B81A;
+  --c8-ink:  #04140A;
+
+  /* Accent — 듀얼톤 1급 (라이트/다크 동일 hex) */
+  --accent-blue:   #0092ff;
+  --accent-pink:   #FF1F6F;
+  --accent-yellow: #FFCB05;
+  --accent-green:  #00C853;
+  --accent-orange: #FF7A1A;
+  --accent-purple: #C65CFF;
+  --accent-mint:   #22D3A4;
+}
+
+/* ============================================================
+   TONE — Light (디폴트)
+   ============================================================ */
+:root, [data-tone="light"] {
+  --bg:       #FFFFFF;
+  --bg-alt:   #F5F5F7;
+  --text:     #1D1D1F;
+  --headline: #000000;
+  --text-secondary: #2c2c34;
+  --text-tertiary:  #5a5a62;
+  --hairline: #E5E5E5;
+  --shadow-card:  0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-vivid: 0 12px 32px rgba(255,31,111,0.18);
+}
+
+/* TONE — Dark (Duo Hex 동일·glow만 추가) */
+[data-tone="dark"] {
+  --bg:       #0a0a0f;
+  --bg-alt:   #1D1D1F;
+  --text:     #F5F5F7;
+  --headline: #FFFFFF;
+  --text-secondary: #c8c8d0;
+  --text-tertiary:  #9a9aa2;
+  --hairline: #2A2A2A;
+  --shadow-card:  0 12px 32px rgba(0,0,0,0.6);
+  --shadow-vivid: 0 0 48px rgba(255,31,111,0.4);
+}
+
+/* ============================================================
+   VOLUME — MINIMAL (Ive=Light·Ferrari=Dark)
+   ============================================================ */
+
+/* Ive — Light MINIMAL */
+[data-volume="minimal"][data-tone="light"], [data-mode="ive"] {
+  --bg:       #FAFAFA;
+  --text:     #0A0A0A;
+  --hairline: #E5E5E5;
+  --accent:   #FF2D7E;   /* MINIMAL 액센트 1·S≥90% */
+  --hl-yellow: transparent;
+  --hl-green:  transparent;
+  --hl-pink:   transparent;
+  --hl-blue:   transparent;
+  --hl-c8:     transparent;
+  --grad-text: var(--accent);
+  --r-card:    0;
+  --shadow-card: none;
+}
+
+/* Ferrari — Dark MINIMAL (serif·italic 절대 ✗) */
+[data-volume="minimal"][data-tone="dark"], [data-mode="ferrari"] {
+  --bg:       #0A0A0A;
+  --text:     #FAFAFA;
+  --hairline: #2A2A2A;
+  --accent:   #FF2800;   /* Ferrari Red·S≥90% */
+  --font-display: 'Pretendard Variable', Pretendard, sans-serif;
+  --font-text:    'Pretendard Variable', Pretendard, sans-serif;
+  --hl-yellow: transparent;
+  --hl-green:  transparent;
+  --hl-pink:   transparent;
+  --hl-blue:   transparent;
+  --hl-c8:     transparent;
+  --grad-text: var(--accent);
+  --r-card:    0;
+  --shadow-card: none;
+}
+
+[data-mode="ferrari"] *,
+[data-volume="minimal"][data-tone="dark"] * {
+  font-style: normal !important;
+}
+
+/* ============================================================
+   UTILITY — 형광펜 v2.1 105% 룰
+   ============================================================ */
+.hl {
+  --hl-color: var(--hl-yellow);
+  background-color: var(--hl-color);
+  color: var(--hl-ink);
+  -webkit-text-fill-color: var(--hl-ink);
+  padding: 0 6px;
+  padding-block: 0;
+  border-radius: var(--r-pill);
+  line-height: var(--lh-hl);
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  font-weight: inherit;
+}
+.hl-yellow { --hl-color: var(--hl-yellow); }
+.hl-green  { --hl-color: var(--hl-green); }
+.hl-c8     { --hl-color: var(--hl-c8); }
+.hl-pink   { --hl-color: var(--hl-pink); }
+.hl-blue   { --hl-color: var(--hl-blue); }
+.hl-tight  { padding: 0 4px; padding-block: 0; }
+.hl-block  { padding: 0 8px; padding-block: 0; }
+
+/* gradient-text 5스톱 */
+.gradient-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* container·prose 정렬선 SSOT */
+.wrap, .prose { max-width: var(--w-wrap); margin: 0 auto; padding: 0 var(--sp-5); }
+.prose > *    { max-width: var(--w-prose); }
+
+/* 한국어 §LINEBREAK */
+.hero h1, .section-title, .lead, .body p, .caption, blockquote,
+.bento .card, .toc, .quote-pull, .num-big, .kpi-label,
+h1, h2, h3, h4, .title, .subtitle, .pull-quote {
+  word-break: keep-all;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+.nb { white-space: nowrap; }
+
+/* 접근성 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}

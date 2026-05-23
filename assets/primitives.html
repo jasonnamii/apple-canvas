@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Apple Canvas — Primitives Catalog</title>
+<link rel="stylesheet" href="./tokens.css">
+<style>
+  body { margin:0; padding:var(--sp-8); background:var(--bg); color:var(--text); font-family:var(--font-text); }
+  .grid { display:grid; gap:var(--sp-7); }
+  .card { padding:var(--sp-6); border:1px solid var(--hairline); border-radius:var(--r-3); }
+  .label { font-size:var(--fs-eyebrow); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:.08em; margin-bottom:var(--sp-3); }
+  code { font-family:var(--font-mono); font-size:var(--fs-sm); color:var(--accent-blue); }
+  hr { border:0; border-top:1px solid var(--hairline); margin:var(--sp-7) 0; }
+</style>
+</head>
+<body class="wrap">
+
+<h1 style="font-size:var(--fs-d2);line-height:var(--lh-tight);letter-spacing:var(--tr-tight)">
+  Apple Canvas <span class="gradient-text">Primitives</span>
+</h1>
+<p class="prose" style="font-size:var(--fs-body);line-height:var(--lh-body)">
+  재사용 컴포넌트 카탈로그. 신규 산출물은 여기서 골라 조립. 신설 ✗·복사 ○.
+</p>
+
+<hr>
+
+<!-- ============================================================
+     1. HERO (Bento·Cinematic 양용)
+     ============================================================ -->
+<section class="card">
+  <div class="label">P1 · Hero</div>
+  <h2 style="font-size:var(--fs-d1);line-height:var(--lh-tight);letter-spacing:var(--tr-tight);word-break:keep-all">
+    <span class="gradient-text">한 페이지 한 메시지</span>로<br>
+    <span class="nb">강도를 뽑는다.</span>
+  </h2>
+  <code>copy: assets/scaffold-master.html § hero</code>
+</section>
+
+<hr>
+
+<!-- ============================================================
+     2. BIG-NUMBER (KPI·Report)
+     ============================================================ -->
+<section class="card">
+  <div class="label">P2 · Big-Number</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-7)">
+    <div>
+      <div style="font-size:var(--fs-d2);font-weight:600;line-height:var(--lh-tight)" class="gradient-text">2.61M</div>
+      <div style="font-size:var(--fs-sm);color:var(--text-tertiary)">Spotify monthly listeners</div>
+    </div>
+    <div>
+      <div style="font-size:var(--fs-d2);font-weight:600;line-height:var(--lh-tight)" class="gradient-text">11억</div>
+      <div style="font-size:var(--fs-sm);color:var(--text-tertiary)">누적 뷰</div>
+    </div>
+  </div>
+  <code style="margin-top:var(--sp-5);display:block">use: KPI report · 1pager · evidence stack</code>
+</section>
+
+<hr>
+
+<!-- ============================================================
+     3. HIGHLIGHT (105% rule)
+     ============================================================ -->
+<section class="card">
+  <div class="label">P3 · Highlight (.hl 105% 룰)</div>
+  <p style="font-size:var(--fs-h2);line-height:var(--lh-snug)">
+    <span class="hl hl-yellow hl-block">Apple이</span> 디자인하다.
+    <span class="hl hl-pink hl-tight">놀라운 성능</span>을 제공합니다.
+    다음 단계로 <span class="hl hl-c8">가볍게</span> 이동하세요.
+  </p>
+  <code>line-height: 1.05 · padding-block: 0 · display: inline · box-decoration-break: clone</code>
+</section>
+
+<hr>
+
+<!-- ============================================================
+     4. BENTO CARD
+     ============================================================ -->
+<section class="card">
+  <div class="label">P4 · Bento Card</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-4)">
+    <div style="padding:var(--sp-6);background:var(--bg-alt);border-radius:var(--r-3);box-shadow:var(--shadow-card)">
+      <div style="font-size:var(--fs-h2);font-weight:600">Bento Card</div>
+      <p style="color:var(--text-secondary);font-size:var(--fs-sm)">KPI·요약·1pager 단위</p>
+    </div>
+    <div style="padding:var(--sp-6);background:var(--bg-alt);border-radius:var(--r-3);box-shadow:var(--shadow-card)">
+      <div style="font-size:var(--fs-h2);font-weight:600">Bento Card</div>
+      <p style="color:var(--text-secondary);font-size:var(--fs-sm)">동일 grid·동일 padding 강제</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============================================================
+     5. MINIMAL MODE — Ive
+     ============================================================ -->
+<section data-mode="ive" style="padding:var(--sp-8);background:var(--bg);color:var(--text);border:1px solid var(--hairline)">
+  <div class="label" style="color:var(--text)">P5 · MINIMAL · Ive</div>
+  <h3 style="font-size:var(--fs-d3);font-weight:300;letter-spacing:var(--tr-tight);margin:var(--sp-5) 0">
+    The detail <span style="color:var(--accent)">is the design.</span>
+  </h3>
+  <div style="border-top:1px solid var(--hairline);padding-top:var(--sp-4);font-size:var(--fs-sm);color:var(--text)">
+    액센트 1색 · 면적 ≤5% · hairline · 풀필 ✗ · gradient ✗
+  </div>
+</section>
+
+<hr>
+
+<!-- ============================================================
+     6. MINIMAL MODE — Ferrari (산세리프 강제)
+     ============================================================ -->
+<section data-mode="ferrari" style="padding:var(--sp-8);background:var(--bg);color:var(--text);border:1px solid var(--hairline)">
+  <div class="label" style="color:var(--text)">P6 · MINIMAL · Ferrari</div>
+  <h3 style="font-size:var(--fs-d3);font-weight:300;letter-spacing:var(--tr-tight);margin:var(--sp-5) 0">
+    From the test bench <span style="color:var(--accent)">to the road.</span>
+  </h3>
+  <div style="border-top:1px solid var(--hairline);padding-top:var(--sp-4);font-size:var(--fs-sm);color:var(--text)">
+    Dark · 액센트 1색 (Ferrari Red #FF2800) · 산세리프 강제 · italic ✗
+  </div>
+</section>
+
+</body>
+</html>

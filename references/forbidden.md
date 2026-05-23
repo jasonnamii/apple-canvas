@@ -52,3 +52,19 @@
 ❌ MS워드/엑셀 룩 (회색 표·강약 ✗·비비드 ✗)
 ❌ 허여멀건/힘없는/강약없는 디자인
 ```
+
+
+## MINIMAL 볼륨 금지 (추가)
+
+| 패턴 | 사유 |
+|---|---|
+| MINIMAL인데 `class="hl"` 잔존 | 형광펜 = MAXIMAL 영토. M5 위반 |
+| MINIMAL인데 `gradient-text` 잔존 | 그라디언트 금지. M4 위반 |
+| MINIMAL인데 `box-shadow` 적용 | 침묵 영역 ≥50% 위반. M9 |
+| MINIMAL인데 `border-radius: 12px+` | M8 위반·sharp corner |
+| Ferrari 모드 `font-family: ...serif` | M10 위반·산세리프 강제 |
+| Ferrari 모드 `font-style: italic` | M10 위반 |
+| MINIMAL 액센트에 `opacity: 0.5` | 채도 신성불가침 H5 위반·풀채도 유지 |
+| 액센트 면적 >5% | M2 위반·MAXIMAL로 강등 |
+| 풀필 색 hero/section 블록 | M3 위반·MAXIMAL 영토 |
+| color-mix(in srgb, X, white) | 파스텔화·H5 위반 |

@@ -35,6 +35,8 @@ description: |
   - assets/scaffold-master.html
   - assets/scaffold-bento.html
   - assets/scaffold-scroll.html
+  - assets/tokens.css
+  - scripts/qc.sh
 license: Proprietary. Personal use.
 ---
 
@@ -250,11 +252,13 @@ license: Proprietary. Personal use.
 
 ---
 
-## QC 자동 검증
+## QC 자동 검증 (v260523.3 — 실행 가능 스크립트)
 
 ```bash
-bash references/qc-checklist.md
+bash scripts/qc.sh <HTML_FILE>
 ```
+
+체크리스트 정본: `→ references/qc-checklist.md`. 자동 grep: MINIMAL 누수·Ferrari serif·형광펜 105%·H1 듀얼톤·H5 채도·H6 반응형.
 
 ---
 
@@ -266,26 +270,21 @@ bash references/qc-checklist.md
 | 형식 | .html, .md. |
 | 리서치 결과 (해당 시) | `{VAULT}/_skills research/apple-canvas/{YYYY-MM-DD}_{topic}.md` |
 
-## Reference Index
+## Reference Index (v260523.3 — 카테고리 압축)
 
-| 파일 | 내용 | 언제 |
+| 카테고리 | 파일 | 언제 |
 |---|---|---|
-| `references/accessibility-aria-reduced-motion.md` | accessibility aria reduced motion | 해당 단계 진입 시 |
-| `references/apple-easing.md` | apple easing | 해당 단계 진입 시 |
-| `references/axis-1-color.md` | axis 1 color | 해당 단계 진입 시 |
-| `references/axis-2-typography.md` | axis 2 typography | 해당 단계 진입 시 |
-| `references/axis-3-layout.md` | axis 3 layout | 해당 단계 진입 시 |
-| `references/axis-4-line.md` | axis 4 line | 해당 단계 진입 시 |
-| `references/axis-5-motion.md` | axis 5 motion | 해당 단계 진입 시 |
-| `references/axis-6-emphasis.md` | axis 6 emphasis | 해당 단계 진입 시 |
-| `references/axis-7-dataviz.md` | axis 7 dataviz | 해당 단계 진입 시 |
-| `references/axis-8-interaction.md` | axis 8 interaction | 해당 단계 진입 시 |
-| `references/color-spectrum.md` | color spectrum | 해당 단계 진입 시 |
-| `references/constitution.md` | constitution | 해당 단계 진입 시 |
-| `references/data-big-number.md` | data big number | 해당 단계 진입 시 |
-| `references/data-footnote-system.md` | data footnote system | 해당 단계 진입 시 |
-| `references/diagram-geometry.md` | diagram geometry | 해당 단계 진입 시 |
+| **헌법·금지·QC** | constitution.md · forbidden.md · qc-checklist.md · gotchas.md | 발동 진입·산출 직전·QC |
+| **토큰 SSOT** | `assets/tokens.css` · `scripts/qc.sh` · color-spectrum.md · axis-1-color.md | 모든 산출에 link/script 1순위 |
+| **8 AXIS** | axis-1-color · axis-2-typography · axis-3-layout · axis-4-line · axis-5-motion · axis-6-emphasis · axis-7-dataviz · axis-8-interaction | 축별 상세 결정 |
+| **5 LAYOUT mode** | modes/mode-bento · mode-scroll · mode-mix · mode-cinematic · mode-pt-monolith | INTENT 선택 후 |
+| **3 HTML mode** | mode-html-bento · mode-html-mix · mode-html-scroll | HTML 모드 강도 |
+| **3 TONE** | tone-light · tone-dark · tone-dual-rules | TONE 결정 |
+| **카탈로그 3** | layout-catalog · motion-catalog · visual-effects-catalog | 어휘 사전 (정답 ✗) |
+| **세부 가이드** | korean-typography · responsive · apple-easing · diagram-geometry · prose-preservation · data-big-number · data-footnote-system · accessibility-aria-reduced-motion · layout-bento-fullsection · layout-compare-matrix · layout-grid-12col · interaction-* (4) · motion-scroll-trigger · motion-sticky-pin · system-data-attributes · system-namespace-bem · typography-16-scale | 해당 단계 진입 시 |
+| **자산** | `assets/scaffold-master.html` · `scaffold-bento.html` · `scaffold-scroll.html` · `primitives.html` · `deck-stage.js` · `tokens.css` | 부팅·복사 |
 
+총 references 42 · modes 5 · assets 6 · scripts 1.
 
 ## Next Phase
 
