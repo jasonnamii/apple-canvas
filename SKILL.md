@@ -6,7 +6,7 @@ description: |
   P2: 애플처럼만들어줘, 디자인해줘, 시각화해줘, 랜딩만들어줘, build apple page, 한국어로, 모바일 반응형, 미니멀로, 맥시멀로, 아이브로, 페라리로, 아이브모드로, 페라리모드로.
   P3: apple-style landing, MAXIMAL volume, MINIMAL volume, Ive mode, Ferrari mode, vivid saturation inviolable.
   P5: .html, .md.
-  NOT: 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체(→shaper-skill).
+  NOT: 단일UI(→ui-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체(→shaper-skill).
 "@uses":
   - assets/scaffold-bento.html
   - assets/scaffold-master.html
@@ -48,7 +48,7 @@ license: Proprietary. Personal use.
 ## Skill Boundaries
 
 - **하는 것** — apple.com 박제 기반 1page~scroll HTML/MD 산출. MAXIMAL(풀강) 디폴트 + MINIMAL(아이브·페라리 alias) 명시호출 분기. 비비드 채도 신성불가침.
-- **안 하는 것** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
+- **안 하는 것** — 단일UI(→ui-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
 
 ## When to Use
 
@@ -56,7 +56,7 @@ license: Proprietary. Personal use.
 - "미니멀로·아이브로·아이브모드로·페라리로·페라리모드로" — MINIMAL 발동 (alias로 Tone 자동 매핑)
 - "맥시멀로·비비드로·형광펜으로" — MAXIMAL 명시 강제
 - 1page KPI·BP·매니페스토·런칭 랜딩·시네마틱 서사 등 *이미지 없이 강도 발현*이 필요한 시점
-- **안 쓸 때** — 단일UI(→ui-action-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
+- **안 쓸 때** — 단일UI(→ui-designer), div래핑(→html-div-style), 일반md(→obsidian-markdown), BP(→bp-guide), 카피(→copywriting-skill), 산문체·KIWI·격식(→shaper-skill).
 
 
 ## Prerequisites
