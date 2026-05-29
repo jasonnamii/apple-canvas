@@ -10,10 +10,21 @@
 /* 이 scaffold는 master에 콘텐츠만 추가한 변형. 실 사용시 master의 style 블록 그대로 복붙 */
 
 /* a11y :focus-visible — 키보드 포커스 전용 outline */
+body {
+  word-break: keep-all;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
 :focus-visible {
   outline: 2px solid #0066CC;
   outline-offset: 2px;
   border-radius: 4px;
+}
+@media (max-width: 734px) {
+  .grid-12 { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 </style>
 </head>

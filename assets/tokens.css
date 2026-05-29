@@ -32,9 +32,9 @@
   --lh-body:  1.5;
   --lh-hl:    1.05;   /* === 형광펜 105% 룰 정본 === */
 
-  --tr-tight: -0.035em;
-  --tr-snug:  -0.022em;
-  --tr-body:  -0.011em;
+  --tr-tight: 0;
+  --tr-snug:  0;
+  --tr-body:  0;
 
   /* ---------- SPACING ---------- */
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;

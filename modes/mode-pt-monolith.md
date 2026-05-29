@@ -38,9 +38,9 @@
   background: var(--bg);
 }
 .hero-monolith h1 {
-  font-size: clamp(80px, 18vw, 280px);
+  font-size: clamp(80px, 12rem, 280px);
   line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   font-weight: 700;
 }
 ```

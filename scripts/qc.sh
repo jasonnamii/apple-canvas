@@ -14,9 +14,10 @@ LIGHT=$(grep -oE 'data-tone="light"[^}]*--accent[^;]*;' "$HTML" | head -1)
 DARK=$(grep -oE 'data-tone="dark"[^}]*--accent[^;]*;' "$HTML" | head -1)
 [ -n "$LIGHT" ] && [ -n "$DARK" ] && [ "$LIGHT" != "$DARK" ] && { echo "❌ H1 듀얼톤 위반"; FAIL=1; }
 
-# H5 비비드 채도 — 파스텔/머디 hex grep (rgba opacity·color-mix·세미투명 fill 차단)
-if grep -qE 'rgba\([0-9, ]+,\s*0\.[1-4][0-9]?\)|color-mix\(in srgb,[^,]+,\s*white' "$HTML"; then
-  echo "❌ H5 채도 신성불가침 위반 — opacity 액센트 또는 white mix"
+# H5 비비드 채도 — accent를 흰색으로 섞어 죽이는 처리 차단.
+# Shadow rgba는 허용한다.
+if grep -qE 'color-mix\(in srgb,[^,]+,\s*white' "$HTML"; then
+  echo "❌ H5 채도 신성불가침 위반 — white mix"
   FAIL=1
 fi
 

@@ -143,7 +143,7 @@ React/Vue 모듈 컨벤션. 컴포넌트별 해시 접미사로 충돌 방지.
 /* FeatureCardPro 모듈 */
 .FeatureCardPro { background: var(--bg-alt); border-radius: var(--radius-tile); padding: 32px; }
 .FeatureCardPro_short { aspect-ratio: 1.5; }
-.FeatureCardPro_headline { font-size: clamp(28px, 3vw, 40px); font-weight: 700; }
+.FeatureCardPro_headline { font-size: clamp(28px, 2rem, 40px); font-weight: 700; }
 .FeatureCardPro_body { font-size: 16px; line-height: 1.5; opacity: 0.8; }
 ```
 

@@ -30,7 +30,7 @@
 ## CSS
 ```css
 .big-number-block { text-align: center; padding: 80px 24px; }
-.headline-super { font-size: clamp(140px, 18vw, 200px); font-weight: 900; line-height: 0.95; letter-spacing: -0.02em; }
+.headline-super { font-size: clamp(140px, 11rem, 200px); font-weight: 900; line-height: 0.95; letter-spacing: 0; }
 .big-number-value { display: inline-block; }
 .big-number-unit { font-size: 0.5em; vertical-align: super; opacity: 0.7; }
 ```

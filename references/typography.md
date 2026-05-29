@@ -21,10 +21,10 @@
 
 | 단계 | 용도 | clamp 박제 |
 |---|---|---|
-| **K-Hero** | 풀페이지 Hero · PT-Monolith | `clamp(56px, 11vw, 200px)` |
+| **K-Hero** | 풀페이지 Hero · PT-Monolith | `clamp(56px, 10rem, 200px)` |
 | **K-Section** | 섹션 헤드라인 (Bento·Scroll 진입부) | `clamp(40px, 5.2vw, 72px)` |
 | **K-Lead** | 섹션 부제·sub | `clamp(19px, 1.8vw, 26px)` |
-| **K-Body** | 본문 (산문 prose) | `clamp(17px, 1.4vw, 21px)` |
+| **K-Body** | 본문 (산문 prose) | `clamp(17px, 1.2rem, 21px)` |
 
 `line-height` 박제:
 - K-Hero: 0.96 ~ 1.05 (1.0 권장)
@@ -84,12 +84,12 @@
 
 ```
 ❌ WRONG — 한국어 PT 빅타이포에 word-break 없이 작성
-.hero-title { font-size: clamp(56px, 11vw, 200px); }
+.hero-title { font-size: clamp(56px, 10rem, 200px); }
 <h1>메타인지가 분기점이다</h1>
 → 결과: 1440px에서 "메타인지" + "가" + "분기점이다" 어색하게 잘림
 
 ✅ CORRECT — keep-all + nb-span 강제
-.hero-title { font-size: clamp(56px, 11vw, 200px); word-break: keep-all; }
+.hero-title { font-size: clamp(56px, 10rem, 200px); word-break: keep-all; }
 <h1 class="hero-title">
   <span class="nb">메타인지가</span><br>
   <span class="nb">분기점이다</span>
@@ -115,7 +115,7 @@ A2 typography의 영문 16스케일과 한국어 4단계의 대응:
 
 - **H2 위반 가능성:** 한국어가 t-13(160px) 이상 가면 받침 잘림 다수. K-Hero는 viewport vw 비례로 자동 축소.
 - **굵기 트레이드오프:** 한글은 굵을수록 가독성 ↓ (받침 뭉침). PT 빅타이포에서도 weight 800 이내 권장. 900 이상은 라틴 한정.
-- **letter-spacing 음수 한계:** -0.05em 초과 시 받침이 다음 글자에 닿음. -0.045em 박제.
+- **letter-spacing:** Codex 기본값은 0. 작은 양수 라벨 트래킹만 예외.
 - **nb-span 모바일 해제 필수:** 미해제 시 모바일에서 한 줄이 화면 폭 초과 → 가로 스크롤.
 
 
@@ -139,11 +139,11 @@ A2 typography의 영문 16스케일과 한국어 4단계의 대응:
 |---|---|---|---|---|
 | 1 | `eyebrow` | `typography-eyebrow` | 12px | 600 UPPER |
 | 2 | `section-headline` | `typography-section-headline` | clamp(40px, 5vw, 64px) | 900 |
-| 3 | `hero-tagline` | `typography-hero-tagline` | clamp(80px, 10vw, 120px) | 900 |
-| 4 | `headline-super` | `typography-headline-super` | clamp(140px, 18vw, 200px) | 900 |
-| 5 | `banner-card-headline` | `typography-banner-card-headline` | clamp(28px, 3vw, 40px) | 700 |
+| 3 | `hero-tagline` | `typography-hero-tagline` | clamp(80px, 6rem, 120px) | 900 |
+| 4 | `headline-super` | `typography-headline-super` | clamp(140px, 11rem, 200px) | 900 |
+| 5 | `banner-card-headline` | `typography-banner-card-headline` | clamp(28px, 2rem, 40px) | 700 |
 | 6 | `feature-card-headline` | `typography-feature-card-headline` | clamp(24px, 2.5vw, 32px) | 700 |
-| 7 | `tile-headline` | `typography-tile-headline` | clamp(20px, 2vw, 28px) | 700 |
+| 7 | `tile-headline` | `typography-tile-headline` | clamp(20px, 1.5rem, 28px) | 700 |
 | 8 | `gallery-caption` | `typography-gallery-caption` | clamp(14px, 1.4vw, 18px) | 400 |
 | 9 | `body-elevated` | `typography-body-elevated` | clamp(20px, 1.8vw, 24px) | 400 |
 | 10 | `body` | `typography-body` | clamp(16px, 1.4vw, 18px) | 400 |
@@ -205,8 +205,8 @@ html[lang^="en"] body { font-family: var(--font-en); }
 ## CSS 스케일 풀버전
 ```css
 .typography-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-.typography-hero-tagline { font-size: clamp(80px, 10vw, 120px); font-weight: 900; line-height: 1.05; letter-spacing: -0.015em; }
-.typography-headline-super { font-size: clamp(140px, 18vw, 200px); font-weight: 900; line-height: 0.95; letter-spacing: -0.02em; }
+.typography-hero-tagline { font-size: clamp(80px, 6rem, 120px); font-weight: 900; line-height: 1.05; letter-spacing: 0; }
+.typography-headline-super { font-size: clamp(140px, 11rem, 200px); font-weight: 900; line-height: 0.95; letter-spacing: 0; }
 /* … 나머지 14개 */
 ```
 

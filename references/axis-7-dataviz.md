@@ -14,7 +14,7 @@
 .big-number {
   font-size: var(--t-hero-super);   /* 200px */
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   color: var(--accent-pink);   /* 또는 gradient-text */
 }
 .big-number .unit { font-size: 0.4em; opacity: 0.7; margin-left: 0.2em; }

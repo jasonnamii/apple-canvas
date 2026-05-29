@@ -102,7 +102,7 @@ apple-canvas가 산문체 본문(prose)을 받았을 때, **본문 100% verbatim
 }
 .prose > * { max-width: 760px; }   /* 본문 가독폭 자동 제한 */
 .prose p {
-  font-size: clamp(17px, 1.4vw, 21px);
+  font-size: clamp(17px, 1.2rem, 21px);
   line-height: 1.78;
   margin-bottom: 26px;
   word-break: keep-all;
