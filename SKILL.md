@@ -9,6 +9,17 @@ license: Proprietary. Personal use.
 
 Vivid Apple-style HTML pages: big typography, clean hierarchy, high-saturation accents, and one clear message per screen.
 
+## 범위 — 디자인·시각화 전용 (문체·내용 불가침)
+
+이 스킬은 **시각 디자인만** 책임진다. 사용자가 준 텍스트는 텍스트층(작성자·UP·shaper-skill)의 영토이며 침범하지 않는다.
+
+- 본문·제목의 **어휘·어미·문장구조·문단·문체를 한 글자도 바꾸지 않는다.** 받은 텍스트 그대로(verbatim) 시각만 입힌다.
+- **UP 입니다체(또는 작성자 문체)를 유지한다.** Apple식 빅타이포·임팩트 무드 때문에 본문을 슬로건·선언형·짧은 카피로 **다시 쓰는 것은 절대 금지**다.
+- 본문 산문을 표·블릿으로 분해하지 않는다. 강조는 인라인 형광펜·pullquote 발췌만(→ `references/prose-preservation.md`).
+- 카피·헤드라인 생성·톤 변환은 이 스킬의 일이 아니다 → 텍스트는 미리 받는다(없으면 작성자·shaper-skill·copywriting-skill).
+
+상세: `references/prose-preservation.md`.
+
 ## Use When
 
 - The user asks for an Apple-like landing page, one-pager, KPI board, cinematic scroll, or presentation-style HTML.
