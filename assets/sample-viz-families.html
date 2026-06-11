@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Canvas — 8대 시각문법 패밀리 데모</title>
+<style>
+:root{
+  --ease-apple:cubic-bezier(0.4,0,0.2,1);
+  --radius-tile:36px;
+  --accent-blue:#0092ff; --accent-pink:#FF1F6F; --accent-yellow:#FFCB05;
+  --accent-green:#00C853; --accent-orange:#FF7A1A; --accent-purple:#C65CFF;
+  --imac-silver:#4a4a52;
+  --hl-yellow:#F0F921; --hl-c8:#07ED21; --hl-blue:#6FB0FF; --hl-ink:#0A0A0C;
+  --ai-gradient:linear-gradient(90deg,#fd9700 0%,#f40 28%,#ff2469 49%,#c65cff 78%,#0092ff 100%);
+}
+:root[data-theme="light"]{--bg:#FFFFFF;--bg-alt:#F5F5F7;--text:#1D1D1F;--headline:#000;--text-secondary:#2c2c34;--text-tertiary:#5a5a62;--shadow-card:0 8px 24px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.04);}
+:root[data-theme="dark"]{--bg:#0a0a0f;--bg-alt:#1D1D1F;--text:#F5F5F7;--headline:#FFF;--text-secondary:#c8c8d0;--text-tertiary:#9a9aa2;--shadow-card:0 12px 32px rgba(0,0,0,.6);--imac-silver:#c8c8d0;--accent-blue:#3DB3FF;--accent-green:#4DD964;--glow-pink:0 0 32px rgba(255,31,111,.5);}
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,"Pretendard",BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);word-break:keep-all;line-break:strict;overflow-wrap:break-word;}
+section{padding:96px 24px;transition:background-color .6s ease,color .4s ease;}
+.theme-dark{background:var(--bg);}
+.wrap{max-width:980px;margin:0 auto;}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--accent-pink);margin:0 0 12px;text-transform:uppercase;}
+.sec-head{font-size:clamp(40px,6vw,64px);font-weight:900;line-height:1.05;margin:0 0 40px;color:var(--headline);letter-spacing:-.02em;}
+.hl{padding:0 6px;border-radius:999px;color:var(--hl-ink);-webkit-text-fill-color:var(--hl-ink);box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+.hl-c8{background:var(--hl-c8);} .hl-blue{background:var(--hl-blue);}
+.gradient-text{background:var(--ai-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+/* hero */
+.hero{min-height:78vh;display:grid;place-content:center;text-align:center;background:#0a0a0f;color:#fff;}
+.hero h1{font-size:clamp(56px,10vw,120px);font-weight:900;line-height:.95;margin:0;letter-spacing:-.03em;}
+.hero p{font-size:21px;color:#c8c8d0;margin:24px 0 0;}
+
+/* FLOW */
+.ac-flow-rail{display:flex;flex-direction:column;gap:20px;max-width:760px;margin:0 auto;}
+.ac-step{display:flex;align-items:flex-start;gap:24px;padding:28px 32px 28px 28px;background:var(--bg-alt);border-left:4px solid var(--step-accent);border-radius:var(--radius-tile);box-shadow:var(--shadow-card);transition:opacity .6s var(--ease-apple),transform .6s var(--ease-apple);}
+html.js .ac-step{opacity:0;transform:translateY(24px);}
+html.js .ac-step.is-in{opacity:1;transform:none;}
+.ac-step-node{flex:0 0 auto;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--step-accent);color:#fff;font-size:28px;font-weight:800;line-height:1;}
+.ac-step-label{font-size:24px;font-weight:700;color:var(--headline);margin:0 0 6px;}
+.ac-step-desc{font-size:17px;color:var(--text-secondary);margin:0;line-height:1.6;}
+
+/* HIERARCHY pyramid */
+.ac-pyramid{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:760px;margin:0 auto;}
+.ac-pyr-row{display:grid;place-items:center;min-height:84px;padding:18px 28px;background:var(--pyr-accent);border-radius:18px;}
+.ac-pyr-label{font-size:28px;font-weight:800;color:#fff;text-align:center;}
+.ac-pyr-label.gradient-text{-webkit-text-fill-color:transparent;}
+
+/* COMPARE 2x2 */
+.ac-2x2{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px;margin:0 auto;}
+.ac-2x2-cell{padding:32px 28px;border-radius:var(--radius-tile);background:color-mix(in srgb,var(--c) 12%,var(--bg));border-top:4px solid var(--c);}
+.ac-2x2-tag{font-size:13px;font-weight:800;letter-spacing:.05em;color:var(--c);}
+.ac-2x2-cell p{font-size:24px;font-weight:700;color:var(--headline);margin:8px 0 0;}
+
+/* METRIC */
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:760px;margin:0 auto;}
+.ac-bar-rect{transition:height .9s var(--ease-apple),y .9s var(--ease-apple);}
+.ac-donut-arc{transition:stroke-dashoffset 1.2s var(--ease-apple);}
+
+/* RELATION venn */
+/* TIME */
+.ac-timeline{position:relative;max-width:640px;margin:0 auto;padding-left:48px;}
+.ac-timeline::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:4px;border-radius:2px;background:var(--ai-gradient);}
+.ac-tl-item{position:relative;padding:0 0 40px;transition:opacity .5s var(--ease-apple),transform .5s var(--ease-apple);}
+html.js .ac-tl-item{opacity:0;transform:translateY(20px);}
+html.js .ac-tl-item.is-in{opacity:1;transform:none;}
+.ac-tl-node{position:absolute;left:-40px;top:6px;width:20px;height:20px;border-radius:50%;background:var(--accent-pink);border:4px solid var(--bg);}
+.ac-tl-date{font-size:24px;font-weight:800;color:var(--headline);margin:0 0 6px;}
+.ac-tl-text{font-size:17px;color:var(--text-secondary);margin:0;}
+
+/* DISTRIBUTION scorecard */
+.ac-scorecard{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:4px;}
+.ac-sc-row{display:grid;grid-template-columns:120px 20px 1fr;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--imac-silver);}
+.ac-sc-item{font-size:17px;font-weight:700;color:var(--headline);}
+.ac-sc-dot{width:18px;height:18px;border-radius:50%;}
+.ac-sc-note{font-size:17px;color:var(--text-secondary);}
+
+/* TABLE */
+.ac-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;}
+.ac-table th,.ac-table td{padding:18px 20px;border-bottom:1px solid var(--imac-silver);}
+.ac-table thead th{background:var(--accent-blue);color:#fff;font-weight:800;text-align:right;}
+.ac-table thead th:first-child{text-align:left;}
+.ac-table tbody th{font-weight:700;color:var(--headline);text-align:left;}
+.ac-table tbody td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);}
+.ac-table .row-emph{background:color-mix(in srgb,var(--accent-pink) 8%,var(--bg));box-shadow:inset 4px 0 0 var(--accent-pink);}
+@media (max-width:680px){.metric-grid,.ac-2x2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-theme="light">
+
+<section class="hero" data-theme="dark">
+  <div>
+    <p class="eyebrow">Apple Canvas</p>
+    <h1>여덟 가지<br>시각문법</h1>
+    <p>한 화면 한 메시지를 비비드 빅타이포로 만듭니다.</p>
+  </div>
+</section>
+
+<!-- 1 FLOW -->
+<section class="theme-light">
+  <div class="wrap">
+    <p class="eyebrow">FLOW 흐름·절차</p>
+    <h2 class="sec-head">프로세스 스텝</h2>
+    <div class="ac-flow-rail">
+      <div class="ac-step" style="--step-accent:var(--accent-pink)"><div class="ac-step-node">1</div><div><p class="ac-step-label">입력 수집</p><p class="ac-step-desc">컨셉·와이어프레임·피그마 URL을 한자리에 모읍니다.</p></div></div>
+      <div class="ac-step" style="--step-accent:var(--accent-orange)"><div class="ac-step-node">2</div><div><p class="ac-step-label">구조 추출</p><p class="ac-step-desc">화면이 있으면 역추출, 컨셉만 있으면 후보를 구조화합니다.</p></div></div>
+      <div class="ac-step" style="--step-accent:var(--accent-blue)"><div class="ac-step-node">3</div><div><p class="ac-step-label">범위 확정</p><p class="ac-step-desc">만들 것과 만들지 않을 것을 잠급니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 HIERARCHY -->
+<section class="theme-dark" data-theme="dark">
+  <div class="wrap">
+    <p class="eyebrow">HIERARCHY 계층·구성</p>
+    <h2 class="sec-head">결론 우선 피라미드</h2>
+    <div class="ac-pyramid">
+      <div class="ac-pyr-row" style="--pyr-accent:var(--accent-pink);width:46%"><span class="ac-pyr-label gradient-text">핵심 결론</span></div>
+      <div class="ac-pyr-row" style="--pyr-accent:var(--accent-orange);width:68%"><span class="ac-pyr-label">근거</span></div>
+      <div class="ac-pyr-row" style="--pyr-accent:var(--accent-blue);width:90%"><span class="ac-pyr-label">데이터</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 COMPARE -->
+<section class="theme-light">
+  <div class="wrap">
+    <p class="eyebrow">COMPARE 비교·대조</p>
+    <h2 class="sec-head">2x2 매트릭스</h2>
+    <div class="ac-2x2">
+      <div class="ac-2x2-cell" style="--c:var(--accent-blue)"><span class="ac-2x2-tag">고가치·저비용</span><p>우선 추진</p></div>
+      <div class="ac-2x2-cell" style="--c:var(--accent-purple)"><span class="ac-2x2-tag">고가치·고비용</span><p>선별 투자</p></div>
+      <div class="ac-2x2-cell" style="--c:var(--accent-orange)"><span class="ac-2x2-tag">저가치·저비용</span><p>틈새 보완</p></div>
+      <div class="ac-2x2-cell" style="--c:var(--accent-pink)"><span class="ac-2x2-tag">저가치·고비용</span><p>제외</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 METRIC -->
+<section class="theme-dark" data-theme="dark">
+  <div class="wrap">
+    <p class="eyebrow">METRIC 수치·그래프</p>
+    <h2 class="sec-head">막대 + 도넛 (인라인 SVG)</h2>
+    <div class="metric-grid">
+      <svg class="ac-bar" viewBox="0 0 480 280" role="img" aria-label="막대 차트">
+        <line x1="40" y1="240" x2="460" y2="240" stroke="var(--imac-silver)" stroke-width="1"/>
+        <rect class="ac-bar-rect" x="70" y="120" width="60" height="120" rx="10" fill="var(--accent-blue)" data-h="120"/>
+        <rect class="ac-bar-rect" x="170" y="160" width="60" height="80" rx="10" fill="var(--accent-purple)" data-h="80"/>
+        <rect class="ac-bar-rect" x="270" y="70" width="60" height="170" rx="10" fill="var(--accent-pink)" data-h="170"/>
+        <rect class="ac-bar-rect" x="370" y="100" width="60" height="140" rx="10" fill="var(--accent-green)" data-h="140"/>
+      </svg>
+      <svg class="ac-donut" viewBox="0 0 200 200" role="img" aria-label="도넛">
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--bg-alt)" stroke-width="22"/>
+        <circle class="ac-donut-arc" cx="100" cy="100" r="80" fill="none" stroke="var(--accent-pink)" stroke-width="22" stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="502" stroke-dashoffset="141" data-pct="72"/>
+        <text x="100" y="108" text-anchor="middle" font-size="44" font-weight="800" fill="var(--headline)"><tspan data-countup data-target="72">72</tspan>%</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 5 RELATION -->
+<section class="theme-light">
+  <div class="wrap">
+    <p class="eyebrow">RELATION 관계·망</p>
+    <h2 class="sec-head">벤다이어그램</h2>
+    <svg viewBox="0 0 420 280" style="max-width:440px;width:100%;display:block;margin:0 auto" role="img" aria-label="벤다이어그램">
+      <circle cx="160" cy="140" r="110" fill="var(--accent-pink)" fill-opacity="0.55"/>
+      <circle cx="260" cy="140" r="110" fill="var(--accent-blue)" fill-opacity="0.55"/>
+      <text x="110" y="146" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">기획</text>
+      <text x="310" y="146" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">개발</text>
+      <text x="210" y="146" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">핸드오프</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 6 TIME -->
+<section class="theme-dark" data-theme="dark">
+  <div class="wrap">
+    <p class="eyebrow">TIME 시간·변화</p>
+    <h2 class="sec-head">수직 타임라인</h2>
+    <div class="ac-timeline">
+      <div class="ac-tl-item"><span class="ac-tl-node"></span><p class="ac-tl-date">2026 Q1</p><p class="ac-tl-text">컨셉 확정과 입력 수집</p></div>
+      <div class="ac-tl-item"><span class="ac-tl-node"></span><p class="ac-tl-date">2026 Q2</p><p class="ac-tl-text">PRD와 기능정의 핸드오프</p></div>
+      <div class="ac-tl-item"><span class="ac-tl-node"></span><p class="ac-tl-date">2026 Q3</p><p class="ac-tl-text">개발 착수와 QA Core</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 DISTRIBUTION -->
+<section class="theme-light">
+  <div class="wrap">
+    <p class="eyebrow">DISTRIBUTION 분포·위치</p>
+    <h2 class="sec-head">RAG 스코어카드</h2>
+    <div class="ac-scorecard">
+      <div class="ac-sc-row"><span class="ac-sc-item">진척도</span><span class="ac-sc-dot" style="background:var(--accent-green)"></span><span class="ac-sc-note">계획대로 진행 중</span></div>
+      <div class="ac-sc-row"><span class="ac-sc-item">리스크</span><span class="ac-sc-dot" style="background:var(--accent-yellow)"></span><span class="ac-sc-note">미결정 2건 추적 중</span></div>
+      <div class="ac-sc-row"><span class="ac-sc-item">일정</span><span class="ac-sc-dot" style="background:var(--accent-pink)"></span><span class="ac-sc-note">QA Extended 지연</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 TABLE -->
+<section class="theme-dark" data-theme="dark">
+  <div class="wrap">
+    <p class="eyebrow">TABLE 표·구조화</p>
+    <h2 class="sec-head">정렬 데이터테이블</h2>
+    <table class="ac-table">
+      <thead><tr><th>항목</th><th>2024</th><th>2025</th><th>2026</th></tr></thead>
+      <tbody>
+        <tr><th>매출</th><td>120</td><td>185</td><td>240</td></tr>
+        <tr class="row-emph"><th>영업이익</th><td>14</td><td>28</td><td>51</td></tr>
+        <tr><th>비용</th><td>106</td><td>157</td><td>189</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+// 막대 자람 — HTML은 최종 높이로 정적 렌더합니다. JS가 있으면 0으로 리셋한 뒤 스크롤 시 자랍니다.
+document.querySelectorAll('.ac-bar-rect').forEach(r=>{const t=r.style.transition;r.style.transition='none';r.setAttribute('height',0);r.setAttribute('y',240);r.getBoundingClientRect();r.style.transition=t;});
+const barIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.ac-bar-rect').forEach((r,i)=>{const h=+r.dataset.h;setTimeout(()=>{r.setAttribute('height',h);r.setAttribute('y',240-h);},i*80);});barIO.unobserve(e.target);}});},{threshold:.4});
+document.querySelectorAll('.ac-bar').forEach(el=>barIO.observe(el));
+
+// 도넛 + 카운트업 — HTML은 최종 호로 정적 렌더합니다. JS가 있으면 숨김으로 리셋한 뒤 스크롤 시 채웁니다.
+const C=2*Math.PI*80;
+function countUp(el,target,dur=1600){let s=0;const step=(t)=>{if(!s)s=t;const p=Math.min((t-s)/dur,1);el.textContent=Math.floor(p*target);if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
+document.querySelectorAll('.ac-donut-arc').forEach(a=>{const t=a.style.transition;a.style.transition='none';a.setAttribute('stroke-dashoffset',C);a.getBoundingClientRect();a.style.transition=t;});
+document.querySelectorAll('[data-countup]').forEach(c=>c.textContent='0');
+const donutIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const arc=e.target.querySelector('.ac-donut-arc');arc.setAttribute('stroke-dashoffset',C*(1-(+arc.dataset.pct)/100));const cu=e.target.querySelector('[data-countup]');if(cu)countUp(cu,+cu.dataset.target);donutIO.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.ac-donut').forEach(el=>donutIO.observe(el));
+</script>
+</body>
+</html>

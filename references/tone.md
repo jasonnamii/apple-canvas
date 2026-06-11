@@ -2,7 +2,7 @@
 
 > 통합 대상: tone-light.md, tone-dark.md, tone-dual-rules.md, color-spectrum.md
 
-> 원본 verbatim 보존·헤더만 재정렬.
+> Vivid 액센트 hex 정본은 `axis-1-color.md`입니다. 이 파일의 액센트 hex는 axis-1 비비드(S≥85%)로 정정되어 있습니다. 둘이 어긋나면 axis-1을 따릅니다. 배경·텍스트·형광펜·박스라운드·듀얼톤 전환 규칙은 이 파일이 정본입니다.
 
 
 
@@ -17,17 +17,17 @@
 - 헤드: `#000000` (블랙·900 웨이트)
 - 보조: `#1D1D1F + alpha 0.7` (회색 대신 알파)
 
-## 액센트 (라이트 전용)
-라이트 배경에 다크 액센트를 그대로 쓰면 칙칙함. 라이트용 액센트:
-- 블루: `#0071E3` (애플 액션 블루)
-- 그린: `#00845A`
-- 오렌지: `#CA6B07`
-- 레드: `#BF4800`
-- 퍼플: `#5E5CE6`
-- 핑크: `#D74A78`
+## 액센트 (axis-1 비비드 정본 — 양쪽 동일 hex)
+라이트·다크 모두 풀채도(S≥85%)를 씁니다. 차분 시스템컬러는 forbidden.md 위반입니다.
+- 블루: `#0092ff`
+- 그린: `#00C853`
+- 오렌지: `#FF7A1A`
+- 핑크: `#FF1F6F`
+- 퍼플: `#C65CFF`
+- 옐로: `#FFCB05`
 
 ## 형광펜
-배경 `rgba(0,113,227,0.15)` + 본문 그대로 (블랙·900).
+`.hl` rounded-pill 5색(`axis-1-color.md` §3) + `--hl-ink` 검정 텍스트.
 
 ## 박스 라운드
 디폴트 32~40px (애플 위젯 톤).
@@ -39,13 +39,13 @@
   --bg-alt: #F5F5F7;
   --text: #1D1D1F;
   --headline: #000000;
-  --accent-blue: #0071E3;
-  --accent-green: #00845A;
-  --accent-orange: #CA6B07;
-  --accent-red: #BF4800;
-  --accent-purple: #5E5CE6;
-  --accent-pink: #D74A78;
-  --highlight: rgba(0,113,227,0.15);
+  --accent-blue: #0092ff;
+  --accent-green: #00C853;
+  --accent-orange: #FF7A1A;
+  --accent-yellow: #FFCB05;
+  --accent-purple: #C65CFF;
+  --accent-pink: #FF1F6F;
+  --highlight: var(--hl-yellow);   /* axis-1 형광펜 정본 */
   --radius-tile: 36px;
 }
 ```
@@ -62,17 +62,16 @@
 - 헤드: `#FFFFFF` (화이트·900 웨이트)
 - 보조: `#F5F5F7 + alpha 0.7`
 
-## 액센트 (다크 전용)
-다크 배경에 채도 높은 액센트:
-- 블루: `#2997FF` (애플 다크 블루)
-- 그린: `#30D158`
-- 오렌지: `#FF9F0A`
-- 레드: `#FF453A`
-- 퍼플: `#BF5AF2`
-- 핑크: `#FF375F`
+## 액센트 (axis-1 비비드 정본 — 양쪽 동일 hex, 다크 시인성 보정 2종)
+- 블루: `#3DB3FF` (다크 보정·라이트 `#0092ff`)
+- 그린: `#4DD964` (다크 보정·라이트 `#00C853`)
+- 오렌지: `#FF7A1A`
+- 핑크: `#FF1F6F`
+- 퍼플: `#C65CFF`
+- 옐로: `#FFCB05`
 
 ## 형광펜
-배경 `rgba(41,151,255,0.25)` + 본문 그대로 (화이트·900).
+`.hl` rounded-pill 5색(`axis-1-color.md` §3) + `--hl-ink` 검정 텍스트. 다크에서도 동일 비비드 fill입니다.
 
 ## 박스 라운드
 디폴트 32~40px.
@@ -80,17 +79,17 @@
 ## CSS 변수
 ```css
 :root[data-theme="dark"] {
-  --bg: #000000;
+  --bg: #0a0a0f;
   --bg-alt: #1D1D1F;
   --text: #F5F5F7;
   --headline: #FFFFFF;
-  --accent-blue: #2997FF;
-  --accent-green: #30D158;
-  --accent-orange: #FF9F0A;
-  --accent-red: #FF453A;
-  --accent-purple: #BF5AF2;
-  --accent-pink: #FF375F;
-  --highlight: rgba(41,151,255,0.25);
+  --accent-blue: #3DB3FF;
+  --accent-green: #4DD964;
+  --accent-orange: #FF7A1A;
+  --accent-yellow: #FFCB05;
+  --accent-purple: #C65CFF;
+  --accent-pink: #FF1F6F;
+  --highlight: var(--hl-yellow);   /* axis-1 형광펜 정본 */
   --radius-tile: 36px;
 }
 ```
@@ -154,15 +153,17 @@ section { transition: background-color 600ms ease, color 400ms ease; }
 ## iMac 7색 스펙트럼
 iMac은 제품 SKU별로 7색 스펙트럼을 매핑. apple-canvas는 이를 **테마 액센트**로 차용.
 
-| 색상 | Light HEX | Dark HEX | 용도 |
+> 정본은 `axis-1-color.md` §2 iMac 7-Color입니다. 양쪽 동일 풀채도, 다크 시인성 보정 2종(blue·green)만 예외입니다.
+
+| 색상 | HEX (양쪽 동일) | 다크 보정 | 용도 |
 |---|---|---|---|
-| Green | `#00845A` | `#30D158` | 환경·성장·승인 |
-| Yellow | `#B25000` | `#FFD60A` | 주의·강조 |
-| Orange | `#CA6B07` | `#FF9F0A` | 에너지·활동 |
-| Pink | `#D74A78` | `#FF375F` | 감성·하이라이트 |
-| Purple | `#5E5CE6` | `#BF5AF2` | 프리미엄·창의 |
-| Blue | `#0071E3` | `#2997FF` | 신뢰·액션·기본 CTA |
-| Silver | `#86868B` | `#86868B` | 중립·메타 (회색 대신) |
+| Green | `#00C853` | `#4DD964` | 환경·성장·승인 |
+| Yellow | `#FFCB05` | — | 주의·강조 |
+| Orange | `#FF7A1A` | — | 에너지·활동 |
+| Pink | `#FF1F6F` | — | 감성·하이라이트 |
+| Purple | `#C65CFF` | — | 프리미엄·창의 |
+| Blue | `#0092ff` | `#3DB3FF` | 신뢰·액션·기본 CTA |
+| Silver | `#4a4a52` | `#c8c8d0` | 중립·메타 (회색 대신) |
 
 **Silver는 회색 예외** — 본문·텍스트에 사용 ✗. 메타·구분자만.
 
@@ -199,9 +200,9 @@ iMac은 제품 SKU별로 7색 스펙트럼을 매핑. apple-canvas는 이를 **�
 ## 컬러 스펙트럼 시각화 (Color Indicator)
 ```html
 <div class="colornav">
-  <button class="colornav-swatch" style="background:#30D158" aria-label="Green"></button>
-  <button class="colornav-swatch" style="background:#FF9F0A" aria-label="Orange"></button>
-  <button class="colornav-swatch" style="background:#FF375F" aria-label="Pink"></button>
+  <button class="colornav-swatch" style="background:#00C853" aria-label="Green"></button>
+  <button class="colornav-swatch" style="background:#FF7A1A" aria-label="Orange"></button>
+  <button class="colornav-swatch" style="background:#FF1F6F" aria-label="Pink"></button>
 </div>
 ```
 → `references/interaction.md` 참조.
