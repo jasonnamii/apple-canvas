@@ -1,7 +1,8 @@
 ---
 name: apple-canvas
+version: 1.0
 description: |
-  애플캔버스·apple-canvas — 애플 키노트풍 비비드 프리미엄 HTML 디자인·시각화 스킬. 거대 타이포·벤토 모자이크·풀블리드 컬러섹션·시네마틱 스크롤·고채도 액센트로 한 화면 한 메시지를 만듭니다. 한 장 인포그래픽·KPI 보드·랜딩·발표 덱·제품 소개 페이지에 씁니다. 8대 시각문법 패밀리(흐름·계층·비교·수치·관계·시간·분포·표)를 모두 자기 미감으로 보유합니다. 기본 MAXIMAL. 트리거: 애플캔버스, apple-canvas, 애플처럼, 애플 스타일, 애플풍, 키노트형, 키노트풍, 비비드 덱, 벤토, bento, 한장 시각화, 한 장 인포그래픽, 시네마틱 스크롤, 빅타이포, 풀블리드, 프리미엄 랜딩, KPI 보드, 발표 덱, 제품 소개 페이지, premium HTML, cinematic, vivid deck. MINIMAL은 'minimal·Ive·Ferrari' 명시 시에만. NOT: 흑백 캠페인·슬래시·따옴표 라벨(→box-cut-design), 매거진 세리프·헤어라인·여백 에디토리얼(→editorial-design), deadpan·소문자·직각 그리드(→teenage-design), 프리즘 9 MECE 카드 독트린(→prism-design), 앱 화면·관리자 대시보드·실제 동작 UI(→ui-designer·frontend-design), 단순 마크다운 문서(→직접). Apple Canvas — Apple-like one-page, bento, cinematic, and scroll HTML design system for vivid premium pages. Default is MAXIMAL. MINIMAL is only when explicitly requested by "minimal", "Ive", or "Ferrari".
+  애플캔버스·apple-canvas — 애플 키노트풍 비비드 프리미엄 HTML 디자인·시각화 스킬. 거대 타이포, 벤토 모자이크, 풀블리드 컬러섹션, 시네마틱 스크롤로 한 화면 한 메시지를 만든다. 트리거: 애플캔버스, apple-canvas, 애플풍, 키노트형, 비비드 덱, 벤토, 한 장 인포그래픽, 프리미엄 랜딩. NOT: box-cut-design, editorial-design, teenage-design, prism-design, 앱 UI.
 license: Proprietary. Personal use.
 ---
 
